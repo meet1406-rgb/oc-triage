@@ -1,0 +1,134 @@
+{
+  "timestamp": "20260907_215113",
+  "version": "langgraph",
+  "emails_scored": 5,
+  "errors": [],
+  "summary": {
+    "category_accuracy": 1.0,
+    "urgency_accuracy": 1.0,
+    "authority_accuracy": 1.0,
+    "citation_validity": null,
+    "mean_tool_calls": 1.8
+  },
+  "rows": [
+    {
+      "id": "EM001",
+      "category_hit": true,
+      "category_agent": "maintenance_common_property",
+      "category_label": "maintenance_common_property",
+      "urgency_hit": true,
+      "urgency_agent": "urgent",
+      "urgency_label": "urgent",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 12 Owner,\n\nThank you for contacting us about the south lift at Elara Residences (88 Kavanagh Street, Southbank).\n\nWe are sorry to hear the lift has been out of service since Friday, and we understand this is particularly difficult given your mother's mobility needs on level 14.\n\nWe are treating this as an urgent matter. We have already contacted, or are immediately contacting, the lift maintenance contractor to obtain a repair timeline and to prioritise attendance. As soon as we have a confirmed update \u2014 including an estimated restoration time \u2014 we will pass that information on to you directly.\n\nWe also note this is the third outage in two months. We will be raising the pattern of recurring failures with the contractor and, if necessary, escalating the matter with the committee so they can consider whether further action regarding the lift maintenance contract is warranted.\n\nIf at any time you or your mother face an immediate safety emergency, please call 000.\n\nWe appreciate your patience and will be in touch as soon as we have more information.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Elara Residences (SCH001)",
+      "reasoning": "A failed lift in a 14-storey building directly affects a mobility-impaired resident's ability to safely access and leave her home, which is a safety risk to a person meeting the urgent threshold. No committee decision is needed as this is operational maintenance of common property that the manager handles in the normal course; the recurring pattern is flagged for committee awareness but no commitment is made.",
+      "grounded": true,
+      "grounding_issues": [],
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM003",
+      "category_hit": true,
+      "category_agent": "oc_certificate_request",
+      "category_label": "oc_certificate_request",
+      "urgency_hit": true,
+      "urgency_agent": "priority",
+      "urgency_label": "priority",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear [Conveyancer's name],\n\nThank you for your email regarding the upcoming sale of Lot 8, The Nicholson, 412 Nicholson Street, Carlton North VIC 3054 (PS540117J).\n\nWe can confirm we hold the records for this scheme and are able to prepare the owners corporation certificate for your section 32 statement.\n\nOur fee for preparation of the certificate is [INSERT FEE]. Payment is accepted by [INSERT PREFERRED PAYMENT METHOD, e.g. EFT to the trust account \u2014 please request our bank details].\n\nOnce payment is received, we will prepare and issue the certificate. Please note that certificates are typically turned around within [INSERT TIMEFRAME] business days. Given your timeline, we recommend arranging payment promptly.\n\nPlease do not hesitate to contact us if you have any questions.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 The Nicholson (SCH002)",
+      "reasoning": "This is a straightforward OC certificate request for a section 32 sale statement, with the plan number confirmed against the scheme record. The contract is going out next week, creating a real near-term deadline, so urgency is priority. No committee decision is required \u2014 issuing an OC certificate is an administrative function of the manager.",
+      "grounded": true,
+      "grounding_issues": [],
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM004",
+      "category_hit": true,
+      "category_agent": "levy_query",
+      "category_label": "levy_query",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear B. Fictional,\n\nThank you for getting in touch regarding your levy account for Lot 47, Elara Residences (88 Kavanagh Street, Southbank VIC 3006).\n\nWe understand you believe a payment was made in January and are querying the arrears notice you received. Our records currently show an outstanding balance on your account, and we are happy to investigate this for you.\n\nWe will prepare a full levy statement showing all charges raised and payments received to date, including any payment made in January, so you can see exactly how the current balance has been calculated. We will send this to you as soon as it is ready.\n\nIn the meantime, if you have a receipt or bank confirmation for your January payment, it would be helpful if you could forward a copy to us so we can match it against our records and resolve the matter as quickly as possible.\n\nPlease do not hesitate to contact us if you have any further questions.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager\nElara Residences \u2013 SCH001",
+      "reasoning": "The owner is disputing an arrears notice and requesting a levy statement \u2014 this is a factual account query, not a request for a payment arrangement or any decision by the owners corporation. The manager can retrieve and issue a statement without committee involvement. Urgency is routine as there is no safety issue, imminent deadline, or disclosed financial hardship.",
+      "grounded": true,
+      "grounding_issues": [],
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM008",
+      "category_hit": true,
+      "category_agent": "maintenance_common_property",
+      "category_label": "maintenance_common_property",
+      "urgency_hit": true,
+      "urgency_agent": "urgent",
+      "urgency_label": "urgent",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear A. Fictional,\n\nThank you for contacting us about the water coming through your bathroom ceiling at Lot 12, Elara Residences.\n\nGiven that the leak is active and worsening, we are treating this as urgent. We will arrange for a licensed plumber to attend as soon as possible to locate the source of the water ingress \u2014 whether that is from a pipe within the structure or from the lot above \u2014 and to assess what work is required.\n\nIn the meantime, please:\n- Turn off any water supply to your bathroom if you are able to do so safely and without cutting supply to neighbouring lots.\n- Move or protect any valuables or belongings that may be affected.\n- Document the damage with photographs and note the time and date.\n- If at any point you consider there is an immediate safety risk (for example, water near electrical fittings), please do not hesitate to call 000.\n\nWe will be in touch shortly with the plumber's attendance details. If the situation deteriorates significantly before then, please contact our office directly on the emergency line.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nManagers for the Owners Corporation \u2014 Elara Residences (PS612884K)",
+      "reasoning": "Active water ingress that started overnight and is described as getting worse is a situation deteriorating materially by the hour, meeting the urgent threshold. The source is unknown so both common property and private lot categories apply; arranging an urgent plumber to investigate is within the manager's executive function and does not require a committee decision.",
+      "grounded": true,
+      "grounding_issues": [],
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM009",
+      "category_hit": true,
+      "category_agent": "meeting_governance",
+      "category_label": "meeting_governance",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 8 Owner,\n\nThank you for your email regarding The Nicholson (412 Nicholson Street, Carlton North VIC 3054).\n\n**AGM Date**\nThe next AGM is due on 20 October 2026. A formal notice of meeting will be issued to all lot owners in advance of that date, in accordance with the required notice period.\n\n**Submitting a Motion**\nAny lot owner is entitled to submit a motion for inclusion on the AGM agenda. To do so, please provide your proposed motion in writing to this office. Motions must be received before the notice of meeting is issued \u2014 in practice, we recommend submitting no later than 6\u20138 weeks before the meeting date (i.e., by around late August 2026) to allow time for it to be included in the agenda papers. If you submit it after the notice has gone out, it may need to be held over to a general meeting or the following AGM.\n\nFor your motion regarding bike storage, please describe clearly what you are proposing \u2014 for example, whether you are seeking a change to an existing area, new infrastructure, a rule change, or expenditure \u2014 as this will determine how the motion needs to be framed.\n\nPlease don't hesitate to contact us if you have any further questions.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 The Nicholson (SCH002)",
+      "reasoning": "The owner is asking two factual/procedural questions: the next AGM date (on record as 20 October 2026) and how to submit a motion. Both are informational answers the manager can provide from the scheme record and standard process; no decision by the owners corporation or committee is required. Urgency is routine as the AGM is approximately a year away.",
+      "grounded": true,
+      "grounding_issues": [],
+      "tool_calls": 1,
+      "tools_used": [
+        "get_scheme"
+      ]
+    }
+  ]
+}
