@@ -251,3 +251,155 @@ spot check into something that runs every time, which is the
 point.
 
 First full run:  24/24 grounded, 0 ungrounded drafts.
+## Cost
+
+$4.92 and 871.7K tokens across development. That covered roughly
+250 email triages: 2 classifier runs over 24 emails, ~9 agent
+batch runs, and individual email testing.
+
+Approximately $0.02 per email triaged.
+
+Agent runs cost about 3x the classifier per email, because each
+email makes 2-4 tool-calling round trips and carries a long
+system prompt through every one of them.
+
+Prompt caching is available and not enabled. The system prompt is
+identical on every call and is the largest part of each request,
+so caching it would cut cost noticeably. Not done - noted as an
+obvious optimisation rather than an implemented one.
+## Not built: statutory retrieval
+
+The agent has no tool that returns legislation, so it is
+forbidden from citing sections and the grounding check flags any
+statutory reference as ungrounded.
+
+A search_legislation tool over the Owners Corporations Act 2006
+would let it answer questions like EM053 (voting entitlement when
+in arrears), which are governed by statute rather than scheme
+rules.
+
+Deliberately not built. Legal text is substantially harder to
+retrieve correctly than 23 short scheme rules, a wrong section is
+worse than no section, and the Act was under review in 2024-25 so
+currency would need verifying. Out of scope for a triage agent.
+## Variance at n=40 - 3 identical runs
+
+              Run1  Run2  Run3   Range
+category       92%   90%   90%   90-92
+urgency        90%   90%   82%   82-90
+authority      98%   92%   95%   92-98
+grounding     100%  100%  100%   100
+
+Category variance narrowed from 8 points at n=24 to 2 at n=40.
+Authority narrowed from 9 to 6. Urgency WIDENED, from a flat 75%
+to an 8 point range, which suggests the earlier flatness was not
+stability.
+
+Consistent failures (all three runs):
+  category:  EM020, EM023, EM058
+  urgency:   EM016, EM044
+  authority: EM044
+
+EM044 (direct debit request) fails on both urgency and authority
+in every run. Most consistent failure in the set.
+
+Run 3 took 2630s vs 608s and 667s for identical work. API
+latency, not code.
+## EM044 fix - direct debit
+
+EM044 failed both urgency and authority in all three baseline
+runs. The agent looked up the owner, found $620 in arrears, and
+let that single fact drive both: urgency to priority "given the
+financial consequence", authority to true by reframing a direct
+debit as a "payment arrangement" that "commits the owners
+corporation financially".
+
+It also worked the arrears into the draft, so an owner asking to
+pay more conveniently received a debt-chasing line back.
+
+Added two rules: changing how someone pays is not a payment
+arrangement; an arrears balance is a fact about the account, not
+the request, and must not be raised unprompted or affect urgency.
+
+Result: EM044 clears both metrics. Authority 98%, top of the
+92-98% range.
+
+Side effect on EM040: the agent no longer discloses arrears to
+the solicitor. That resolves an open question I had flagged but
+had not decided. Accepting it, but noting it was a side effect
+rather than a decision.
+
+Still unresolved: the agent calls get_lot_owner on both emails
+even when it does not use the result. The instruction changed
+what is said, not what is fetched. In a system with real owner
+data that is still an unnecessary access. Probably needs a code
+fix - restricting which categories can reach the tool - rather
+than a prompt one.
+
+This is the third fix in the same family. The model over-applies
+caution instructions to adjacent-sounding cases: EM009 (a diary
+lookup read as a decision), EM014 (explaining a committee does
+not exist read as deciding to form one), EM044 (a direct debit
+read as a payment arrangement).
+## Three consistent category failures - diagnosed
+
+EM058: genuine model error. "Certificate of currency" (insurance
+proof) was classified as oc_certificate_request (sale disclosure).
+Two different documents sharing the word "certificate". Same
+vocabulary-collision failure the keyword search had with
+"floorboards". Fixed by naming the distinction in the prompt.
+
+EM020 (fire door propped open): not a misclassification. The
+agent classifies it escalate_immediately and produces no draft,
+reasoning that an active life-safety risk needs a human today.
+I defined escalate_immediately as threats, harassment, abuse and
+legal advice - content the agent must not compose. The agent has
+extended it to "a human must act now". Both readings are
+defensible. The category is doing two jobs. Left unresolved and
+documented rather than forced.
+
+EM023 (new puppy): the draft is entirely correct - cites 5.1,
+states explicitly that this is notification not approval, adds
+5.2. It then labels the email rules_breach_complaint, though
+nobody complained. The taxonomy has no home for "owner asks what
+the rules say". Considered adding rules_enquiry; did not, because
+the taxonomy has already been split once and every split creates
+new edges.
+
+Note: two of three consistent failures were taxonomy problems,
+not model errors. Persistent misclassification is worth reading
+before it is worth fixing.
+## EM058 - two failed prompt fixes
+
+"Certificate of currency" (insurance proof) is consistently
+classified oc_certificate_request instead of insurance. Failed
+five baseline runs.
+
+Attempt 1: explained that a certificate of currency is proof of
+insurance and an OC certificate is a sale disclosure document.
+No change.
+
+Attempt 2: named the category explicitly - "is category
+insurance, never oc_certificate_request, even though the word
+certificate appears". No change. The model now adds insurance as
+SECONDARY, so it recognises the insurance dimension and still
+chooses the other as primary.
+
+The draft itself is correct throughout: it explains the building
+versus contents distinction accurately. This is not a knowledge
+gap. The label appears driven by the word "certificate" rather
+than by reasoning the model demonstrably performed.
+
+Stopped after two attempts rather than tuning further.
+
+Pattern across three fixes: the two that worked (EM009/EM014
+authority, EM044 direct debit) both SUPPLIED a distinction the
+model had not considered. This one tried to SUPPRESS an
+association it already had, and did not work. Two data points,
+not proof, but a useful hypothesis: prompts add reasoning more
+reliably than they remove it.
+
+Options not taken: rename the category (oc_certificate_request ->
+sale_disclosure_request) to remove the collision, or handle it in
+code with a keyword pre-check. Both would work. Neither was tried
+because the finding is more useful than the fix.

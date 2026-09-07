@@ -176,7 +176,13 @@ conversation. If you did not look it up, do not mention it.
 
 CATEGORIES
 {category_lines}
-
+Category disambiguation:
+- oc_certificate_request means ONLY the owners corporation certificate prepared
+  for a property sale, for a section 32 statement, usually requested by a
+  conveyancer or solicitor. Nothing else.
+- A request for a certificate of currency, proof of insurance, or insurance
+  policy details is category "insurance", never oc_certificate_request, even
+  though the word certificate appears.
 URGENCY
 {urgency_lines}
 Do not inflate urgency out of sympathy. Frustration or a long running problem
