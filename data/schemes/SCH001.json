@@ -1,0 +1,70 @@
+{
+  "scheme_id": "SCH001",
+  "plan_number": "PS612884K",
+  "name": "Elara Residences",
+  "address": "88 Kavanagh Street, Southbank VIC 3006",
+  "occupiable_lots": 148,
+  "services_only": false,
+  "manager_appointed": true,
+  "manager_name": "Fictional Strata Partners Pty Ltd",
+  "committee_elected": true,
+  "committee_members": 7,
+  "annual_fees_levied": true,
+  "annual_fee_total_aud": 1284000,
+  "maintenance_plan": {
+    "exists": true,
+    "approved": true,
+    "last_approved": "2025-11-14"
+  },
+  "insurance": {
+    "insurer": "Fictional Mutual",
+    "policy_number": "FM-8841-A",
+    "renewal_date": "2026-10-01",
+    "sum_insured_aud": 96000000
+  },
+  "financials": {
+    "last_checked": "2025-09-30",
+    "method": "audit"
+  },
+  "agm": {
+    "last_held": "2025-11-14",
+    "next_due": "2026-11-14"
+  },
+  "common_property": [
+    "lobby",
+    "two lifts",
+    "rooftop terrace",
+    "gymnasium",
+    "pool",
+    "basement car park",
+    "corridors",
+    "bin room"
+  ],
+  "notes": "High rise. Tier 1.",
+  "lot_owners": [
+    {
+      "lot": 12,
+      "name": "A. Fictional",
+      "email": "lot12@example.invalid",
+      "levy_balance_aud": 0.0,
+      "in_arrears": false,
+      "owner_occupier": true
+    },
+    {
+      "lot": 47,
+      "name": "B. Fictional",
+      "email": "lot47@example.invalid",
+      "levy_balance_aud": 1840.5,
+      "in_arrears": true,
+      "owner_occupier": false
+    },
+    {
+      "lot": 103,
+      "name": "C. Fictional",
+      "email": "lot103@example.invalid",
+      "levy_balance_aud": 0.0,
+      "in_arrears": false,
+      "owner_occupier": true
+    }
+  ]
+}

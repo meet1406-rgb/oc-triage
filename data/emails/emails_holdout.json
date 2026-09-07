@@ -1,0 +1,320 @@
+{
+  "categories": [
+    "maintenance_common_property",
+    "maintenance_private_lot",
+    "approval_request",
+    "oc_certificate_request",
+    "levy_query",
+    "rules_breach_complaint",
+    "meeting_governance",
+    "insurance",
+    "escalate_immediately"
+  ],
+  "urgency_definitions": {
+    "urgent": "Any of: a safety risk to a person; a situation getting materially worse by the hour; or a firm external deadline falling within about 48 hours where missing it causes irreversible harm such as a failed settlement. Needs attention today.",
+    "priority": "A real deadline within days, or significant financial or legal consequence if it slips. Needs attention this week.",
+    "routine": "Everything else. Handle in normal course."
+  },
+  "emails": [
+    {
+      "id": "EM002",
+      "scheme_id": "SCH003",
+      "lot": 4,
+      "from": "lot4@example.invalid",
+      "subject": "Dishwasher leaking",
+      "body": "My dishwasher has been leaking under the kitchen cabinet and the floor is starting to swell. Can you send a plumber please.",
+      "label": {
+        "category": "maintenance_private_lot",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Appliance inside the lot. Rule 2.4 puts this on the owner. Confusion pair with EM008."
+    },
+    {
+      "id": "EM005",
+      "scheme_id": "SCH001",
+      "lot": 103,
+      "from": "lot103@example.invalid",
+      "subject": "Dog in 12 - again",
+      "body": "The dog in lot 12 is off lead in the lobby every single morning and there was mess by the lift on Tuesday that nobody cleaned up. I have raised this twice. What are you actually going to do about it?",
+      "label": {
+        "category": "rules_breach_complaint",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": true
+      },
+      "note": "Rule 5.2. Relabelled to requires authority True: the owner is asking what will be done, and enforcement beyond a courtesy reminder needs instruction from the committee. Previously marked contested."
+    },
+    {
+      "id": "EM006",
+      "scheme_id": "SCH002",
+      "lot": 31,
+      "from": "lot31@example.invalid",
+      "subject": "Floorboards",
+      "body": "Hi, we're renovating and want to put floorboards through the living areas. Do we need to ask anyone or can we just go ahead?",
+      "label": {
+        "category": "approval_request",
+        "secondary_category": "maintenance_private_lot",
+        "urgency": "routine",
+        "requires_committee_decision": true
+      },
+      "note": "Rule 7.2. Works are inside the lot, hence the secondary, but the actual ask is permission. Retrieval currently FAILS on 'floorboards' because the rule says 'hard floor coverings'."
+    },
+    {
+      "id": "EM007",
+      "scheme_id": "SCH003",
+      "lot": 19,
+      "from": "lot19@example.invalid",
+      "subject": "Air conditioner install",
+      "body": "I want to put an air conditioner in. The condenser would go on the external wall near the courtyard. Is that alright?",
+      "label": {
+        "category": "approval_request",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": true
+      },
+      "note": "Rule 2.3, attaching to common property. Retrieval currently ranks rule 2.4 above 2.3 for this wording."
+    },
+    {
+      "id": "EM010",
+      "scheme_id": "SCH003",
+      "lot": 4,
+      "from": "lot4@example.invalid",
+      "subject": "Insurance certificate for my lender",
+      "body": "My bank is refinancing and has asked for a certificate of currency for the building insurance. Can you email it through?",
+      "label": {
+        "category": "insurance",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Routine document request."
+    },
+    {
+      "id": "EM021",
+      "scheme_id": "SCH001",
+      "lot": 103,
+      "from": "agent@example.invalid",
+      "subject": "Following up - certificate for Lot 103",
+      "body": "Following up on my request from last Tuesday. We still haven't received the owners corporation certificate and the contract is due with the purchaser's solicitor Thursday. Please advise urgently.",
+      "label": {
+        "category": "oc_certificate_request",
+        "secondary_category": null,
+        "urgency": "urgent",
+        "requires_committee_decision": false
+      },
+      "note": "Escalated follow up with a named Thursday deadline blocking a settlement. Stays urgent, now supported by the deadline clause added to the urgent definition rather than by instinct."
+    },
+    {
+      "id": "EM022",
+      "scheme_id": "SCH002",
+      "lot": 31,
+      "from": "lot31@example.invalid",
+      "subject": "No hot water",
+      "body": "We've had no hot water since yesterday morning. The unit is the one in the laundry cupboard inside our apartment. Who do I call?",
+      "label": {
+        "category": "maintenance_private_lot",
+        "secondary_category": null,
+        "urgency": "priority",
+        "requires_committee_decision": false
+      },
+      "note": "Hot water unit inside the lot is the owner's, so the category is private lot. Relabelled routine to priority: a week without hot water is a significant consequence, and responsibility affects category, not urgency."
+    },
+    {
+      "id": "EM025",
+      "scheme_id": "SCH001",
+      "lot": 12,
+      "from": "lot12@example.invalid",
+      "subject": "Lobby door not closing",
+      "body": "The main lobby door isn't latching properly, it just swings back open. Anyone can walk in off the street.",
+      "label": {
+        "category": "maintenance_common_property",
+        "secondary_category": null,
+        "urgency": "priority",
+        "requires_committee_decision": false
+      },
+      "note": "Security implication raises it above routine."
+    },
+    {
+      "id": "EM026",
+      "scheme_id": "SCH003",
+      "lot": 19,
+      "from": "lot19@example.invalid",
+      "subject": "Pothole in the driveway",
+      "body": "There's a decent pothole forming near the entry. Caught it with my car last week. Not urgent but it's getting bigger.",
+      "label": {
+        "category": "maintenance_common_property",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Owner explicitly says not urgent. Tests whether the model listens."
+    },
+    {
+      "id": "EM032",
+      "scheme_id": "SCH005",
+      "lot": 3,
+      "from": "lot3@example.invalid",
+      "subject": "Fence between units",
+      "body": "The dividing fence between our courtyard and next door is falling over. Who pays for that?",
+      "label": {
+        "category": "maintenance_common_property",
+        "secondary_category": "maintenance_private_lot",
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Another genuine boundary ambiguity. Should not be answered with false confidence."
+    },
+    {
+      "id": "EM036",
+      "scheme_id": "SCH002",
+      "lot": 8,
+      "from": "lot8@example.invalid",
+      "subject": "Cat",
+      "body": "We're adopting a cat next month. What do we need to do?",
+      "label": {
+        "category": "approval_request",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Rule 5.1 notification. Deliberate near duplicate of EM023 to test consistency between similar cases."
+    },
+    {
+      "id": "EM038",
+      "scheme_id": "SCH003",
+      "lot": 4,
+      "from": "conveyancing2@example.invalid",
+      "subject": "Certificate - Lot 4 Craigieburn Rise",
+      "body": "Please provide an owners corporation certificate for Lot 4. No particular rush, the vendor is still deciding on a listing date.",
+      "label": {
+        "category": "oc_certificate_request",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Certificate request with NO deadline. Tests whether the model treats the category as automatically urgent."
+    },
+    {
+      "id": "EM039",
+      "scheme_id": "SCH001",
+      "lot": 12,
+      "from": "agent2@example.invalid",
+      "subject": "URGENT certificate",
+      "body": "URGENT - need the OC certificate for Lot 12 ASAP!!! Client is waiting.",
+      "label": {
+        "category": "oc_certificate_request",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "TRAP. Shouty and says urgent but names no actual deadline. Tests whether the model reads urgency from tone or from facts."
+    },
+    {
+      "id": "EM045",
+      "scheme_id": "SCH004",
+      "lot": 2,
+      "from": "lot2@example.invalid",
+      "subject": "Special levy",
+      "body": "I've heard there might be a special levy for the driveway. How much and when? I need to plan for it.",
+      "label": {
+        "category": "levy_query",
+        "secondary_category": "meeting_governance",
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Asks about something that may not be decided yet. The agent should not confirm a levy that has not been struck."
+    },
+    {
+      "id": "EM046",
+      "scheme_id": "SCH001",
+      "lot": 47,
+      "from": "lot47@example.invalid",
+      "subject": "Interest charges",
+      "body": "I've been charged interest on my overdue levies. Can you waive it?",
+      "label": {
+        "category": "levy_query",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": true
+      },
+      "note": "Lot 47 is genuinely in arrears. Waiving interest is a decision the manager cannot make alone."
+    },
+    {
+      "id": "EM050",
+      "scheme_id": "SCH003",
+      "lot": 4,
+      "from": "lot4@example.invalid",
+      "subject": "Rubbish in the driveway",
+      "body": "Someone has dumped an old mattress next to the bins again. Third time this year.",
+      "label": {
+        "category": "rules_breach_complaint",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Rule 6.2. No named culprit, same shape as the fire door case."
+    },
+    {
+      "id": "EM051",
+      "scheme_id": "SCH001",
+      "lot": 103,
+      "from": "lot103@example.invalid",
+      "subject": "Fob given to strangers",
+      "body": "The tenant in 88 has been handing out building fobs to their friends. There were four people I didn't recognise in the lift last night.",
+      "label": {
+        "category": "rules_breach_complaint",
+        "secondary_category": null,
+        "urgency": "priority",
+        "requires_committee_decision": false
+      },
+      "note": "Rule 1.3. Security implication."
+    },
+    {
+      "id": "EM054",
+      "scheme_id": "SCH005",
+      "lot": 3,
+      "from": "lot3@example.invalid",
+      "subject": "Do we even need an AGM",
+      "body": "There are only six of us and we all get along. Do we actually have to hold a formal AGM every year?",
+      "label": {
+        "category": "meeting_governance",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "TIER DEPENDENT. SCH005 is tier 4. Requires get_scheme."
+    },
+    {
+      "id": "EM056",
+      "scheme_id": "SCH006",
+      "lot": 55,
+      "from": "lot55@example.invalid",
+      "subject": "Insurance for services OC",
+      "body": "What does the owners corporation insurance cover here? I can't work out what I need my own policy for.",
+      "label": {
+        "category": "insurance",
+        "secondary_category": null,
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "TRAP. SCH006 is services only with sum insured 0. Requires get_scheme and an honest answer."
+    },
+    {
+      "id": "EM057",
+      "scheme_id": "SCH002",
+      "lot": 8,
+      "from": "lot8@example.invalid",
+      "subject": "Claim for stolen bike",
+      "body": "My bike was stolen from the basement storage cage. Does the building insurance cover that?",
+      "label": {
+        "category": "insurance",
+        "secondary_category": "maintenance_common_property",
+        "urgency": "routine",
+        "requires_committee_decision": false
+      },
+      "note": "Contents versus building. Also a security question."
+    }
+  ]
+}

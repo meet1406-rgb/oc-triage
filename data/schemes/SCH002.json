@@ -1,0 +1,60 @@
+{
+  "scheme_id": "SCH002",
+  "plan_number": "PS540117J",
+  "name": "The Nicholson",
+  "address": "412 Nicholson Street, Carlton North VIC 3054",
+  "occupiable_lots": 72,
+  "services_only": false,
+  "manager_appointed": true,
+  "manager_name": "Fictional Strata Partners Pty Ltd",
+  "committee_elected": true,
+  "committee_members": 5,
+  "annual_fees_levied": true,
+  "annual_fee_total_aud": 486000,
+  "maintenance_plan": {
+    "exists": true,
+    "approved": false,
+    "last_approved": null
+  },
+  "insurance": {
+    "insurer": "Fictional Mutual",
+    "policy_number": "FM-2210-B",
+    "renewal_date": "2026-09-12",
+    "sum_insured_aud": 41000000
+  },
+  "financials": {
+    "last_checked": "2025-10-20",
+    "method": "review"
+  },
+  "agm": {
+    "last_held": "2025-10-20",
+    "next_due": "2026-10-20"
+  },
+  "common_property": [
+    "lobby",
+    "one lift",
+    "shared laundry",
+    "courtyard",
+    "basement car park",
+    "corridors"
+  ],
+  "notes": "Tier 2. Maintenance plan exists but is NOT approved. Edge case.",
+  "lot_owners": [
+    {
+      "lot": 8,
+      "name": "D. Fictional",
+      "email": "lot8@example.invalid",
+      "levy_balance_aud": 0.0,
+      "in_arrears": false,
+      "owner_occupier": true
+    },
+    {
+      "lot": 31,
+      "name": "E. Fictional",
+      "email": "lot31@example.invalid",
+      "levy_balance_aud": 620.0,
+      "in_arrears": true,
+      "owner_occupier": true
+    }
+  ]
+}

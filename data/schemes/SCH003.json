@@ -1,0 +1,59 @@
+{
+  "scheme_id": "SCH003",
+  "plan_number": "PS703442C",
+  "name": "Craigieburn Rise",
+  "address": "22 Hanson Road, Craigieburn VIC 3064",
+  "occupiable_lots": 34,
+  "services_only": false,
+  "manager_appointed": true,
+  "manager_name": "Fictional Strata Partners Pty Ltd",
+  "committee_elected": true,
+  "committee_members": 3,
+  "annual_fees_levied": true,
+  "annual_fee_total_aud": 142000,
+  "maintenance_plan": {
+    "exists": false,
+    "approved": false,
+    "last_approved": null
+  },
+  "insurance": {
+    "insurer": "Fictional Mutual",
+    "policy_number": "FM-5537-C",
+    "renewal_date": "2026-08-29",
+    "sum_insured_aud": 14200000
+  },
+  "financials": {
+    "last_checked": "2025-08-29",
+    "method": "review"
+  },
+  "agm": {
+    "last_held": "2025-08-29",
+    "next_due": "2026-08-29"
+  },
+  "common_property": [
+    "driveway",
+    "visitor parking",
+    "shared garden",
+    "letterbox bank",
+    "bin enclosure"
+  ],
+  "notes": "Tier 3 townhouse estate. Insurance renewal is soon.",
+  "lot_owners": [
+    {
+      "lot": 4,
+      "name": "F. Fictional",
+      "email": "lot4@example.invalid",
+      "levy_balance_aud": 0.0,
+      "in_arrears": false,
+      "owner_occupier": true
+    },
+    {
+      "lot": 19,
+      "name": "G. Fictional",
+      "email": "lot19@example.invalid",
+      "levy_balance_aud": 0.0,
+      "in_arrears": false,
+      "owner_occupier": false
+    }
+  ]
+}

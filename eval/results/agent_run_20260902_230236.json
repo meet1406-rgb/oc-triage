@@ -1,0 +1,576 @@
+{
+  "timestamp": "20260902_230236",
+  "emails_scored": 24,
+  "errors": [],
+  "summary": {
+    "category_accuracy": 0.9583333333333334,
+    "urgency_accuracy": 0.75,
+    "authority_accuracy": 0.875,
+    "citation_validity": 1.0,
+    "mean_tool_calls": 2.375
+  },
+  "rows": [
+    {
+      "id": "EM001",
+      "category_hit": true,
+      "category_agent": "maintenance_common_property",
+      "category_label": "maintenance_common_property",
+      "urgency_hit": false,
+      "urgency_agent": "urgent",
+      "urgency_label": "priority",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 12 Owner,\n\nThank you for contacting us regarding the south lift at Elara Residences, 88 Kavanagh Street, Southbank.\n\nWe are sorry to hear the south lift has been out of service since Friday and understand this is particularly difficult given your mother's mobility needs and your location on level 14.\n\nWe are treating this as an urgent matter. We have logged this report and are following up with the lift service contractor immediately to obtain an estimated time for restoration of service. We will provide you with an update as soon as we have a confirmed timeframe from the contractor.\n\nGiven this is the third outage in two months, we will also be raising the pattern of repeated failures with the committee so they can consider whether further action \u2014 such as a service review or additional maintenance \u2014 is warranted.\n\nIf you have any immediate concerns in the meantime, please do not hesitate to contact our office directly.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Elara Residences (PS612884K)",
+      "reasoning": "The south lift is common property in a 148-lot Tier 1 high-rise; its failure directly affects safe and accessible access for a resident with a mobility-impaired occupant on level 14. The situation has been deteriorating since Friday and is materially worsening, justifying urgent classification. No committee decision is needed to engage the existing lift contractor, though the recurring fault pattern should be escalated to the committee for consideration of further action.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM002",
+      "category_hit": true,
+      "category_agent": "maintenance_private_lot",
+      "category_label": "maintenance_private_lot",
+      "urgency_hit": false,
+      "urgency_agent": "priority",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [
+        "2.4"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear F. Fictional,\n\nThank you for getting in touch regarding your lot at 22 Hanson Road, Craigieburn (Lot 4, Craigieburn Rise \u2014 PS703442C).\n\nWe are sorry to hear about the leak and the swelling to your floor. We understand this is a stressful situation and we want to help you get it resolved quickly.\n\nHowever, we must advise that under Rule 2.4 of the Craigieburn Rise Owners Corporation Rules, repairs within a lot \u2014 including internal plumbing fixtures and appliances such as a dishwasher \u2014 are the responsibility of the lot owner. The owners corporation is not responsible for arranging or funding repairs to private appliances or internal fittings.\n\nWe therefore recommend you:\n1. Turn off the water supply to the dishwasher immediately to prevent further damage.\n2. Engage a licensed plumber at your own cost to inspect and repair the dishwasher and any associated plumbing.\n3. Engage a flooring tradesperson to assess the swelling and water damage to the floor coverings within your lot.\n\nIf at any point the leak is found to affect common property or a shared service, please notify us in writing straight away so we can investigate the owners corporation's obligations in relation to that element.\n\nPlease do not hesitate to contact us if you have any further questions.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager\nCraigieburn Rise \u2014 PS703442C",
+      "reasoning": "The leak originates from a private appliance (dishwasher) inside the lot; Rule 2.4 clearly places responsibility for internal plumbing fixtures and appliances with the lot owner, not the owners corporation. Urgency is set to priority (not urgent) because the floor is actively swelling \u2014 the damage is worsening by the day \u2014 but there is no immediate safety risk to a person.",
+      "tool_calls": 3,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM003",
+      "category_hit": true,
+      "category_agent": "oc_certificate_request",
+      "category_label": "oc_certificate_request",
+      "urgency_hit": true,
+      "urgency_agent": "priority",
+      "urgency_label": "priority",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear [Conveyancer's name],\n\nThank you for your email regarding Lot 8 at The Nicholson, 412 Nicholson Street, Carlton North VIC 3054 (Plan PS540117J).\n\nWe are pleased to confirm receipt of your request for an Owners Corporation Certificate for Lot 8 pursuant to section 151 of the Owners Corporations Act 2006.\n\nPlease note the following details relevant to your certificate:\n\n- Lot 8 owner: D. Fictional\n- Levy arrears: Nil \u2014 the lot is fully financial as at our most recent records.\n- Tier: Tier 2 (72 occupiable lots). A committee is in place (5 members elected). A manager is appointed (Fictional Strata Partners Pty Ltd).\n- Insurance: Fictional Mutual, policy FM-2210-B, sum insured AUD $41,000,000, renewal due 12 September 2026.\n- AGM: Last held 20 October 2025; next due by 20 October 2026.\n- Maintenance plan: A maintenance plan exists; however, please be aware that it has not yet been formally approved by the owners corporation. This will be disclosed in the certificate.\n\nRegarding fees and payment: we will confirm the applicable certificate fee and our preferred payment method under separate cover shortly. [NOTE TO MANAGER: please insert the current prescribed or adopted certificate fee and payment instructions before sending.]\n\nGiven your timeline \u2014 contract issuing next week \u2014 we will prioritise preparation of the certificate. Please do not hesitate to contact us if you require anything further in the interim.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 The Nicholson (SCH002)",
+      "reasoning": "This is a statutory OC certificate request with a hard commercial deadline (section 32 contract going out next week), making it priority. No arrears exist for Lot 8, but the unapproved maintenance plan is a material disclosure item that must be flagged in both the draft reply and the certificate itself. Fee and payment details are left as a placeholder for the manager to complete, as those are not available in the system data.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM004",
+      "category_hit": true,
+      "category_agent": "levy_query",
+      "category_label": "levy_query",
+      "urgency_hit": false,
+      "urgency_agent": "priority",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear B. Fictional,\n\nThank you for getting in touch regarding your levy account for Lot 47, Elara Residences (Plan PS612884K), 88 Kavanagh Street, Southbank VIC 3006.\n\nWe can see that your account is currently showing an outstanding balance of $1,840.50 and is recorded as being in arrears. We appreciate you letting us know that you made a payment in January, and we are sorry for any concern the arrears notice has caused.\n\nTo help us resolve this as quickly as possible, could you please provide:\n\n1. The date of your January payment.\n2. The amount paid.\n3. Proof of payment (e.g. bank receipt, EFT confirmation, or screenshot of your transaction).\n\nOnce we have those details we will reconcile your account and send you a full levy statement showing all charges, credits and the current balance with its calculation. If the payment has been missed or misapplied, we will arrange for the record to be corrected promptly.\n\nThank you for your patience, and please do not hesitate to contact us if you have any further questions.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager\nElara Residences \u2013 SCH001",
+      "reasoning": "The owner's account shows a balance of $1,840.50 in arrears, but they assert a January payment was made. This is a levy query. Urgency is elevated to priority because an unresolved arrears dispute can have significant financial and legal consequences for the owner (potential interest or recovery action), and financial hardship or dispute raised by an owner warrants prompt attention this week. No committee decision is required \u2014 reconciling and issuing a statement is an administrative function within the manager's remit.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM005",
+      "category_hit": true,
+      "category_agent": "rules_breach_complaint",
+      "category_label": "rules_breach_complaint",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": false,
+      "authority_agent": true,
+      "authority_label": false,
+      "rules_cited": [
+        "5.2",
+        "2.1"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 103 Owner,\n\nThank you for your email regarding the dog in Lot 12, and for following this up. We understand this is a recurring concern and we appreciate your patience.\n\nWe can confirm that the following rules of Elara Residences apply to the situation you have described:\n\n- Rule 5.2 \u2013 Animals on common property: A dog must be on a lead on common property, and any animal waste must be immediately removed and disposed of by the owner.\n- Rule 2.1 \u2013 Use of common property: An owner or occupier must not use common property in a way that unreasonably interferes with another person's use and enjoyment of it.\n\nAs this matter has been raised on multiple occasions, we will refer it to the Committee for consideration of the appropriate next steps, which may include issuing a formal notice to the owner of Lot 12.\n\nWe will update you once the Committee has had the opportunity to consider the matter.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 Elara Residences (PS612884K)",
+      "reasoning": "This is a clearly documented, repeat rules-breach complaint under Rule 5.2 (dogs must be on lead; waste must be removed) and Rule 2.1 (interference with common property enjoyment). The scheme is Tier 1 with an elected committee, so any enforcement response \u2014 such as issuing a formal breach notice to Lot 12 \u2014 requires committee direction rather than unilateral manager action. Urgency is routine: the situation is frustrating and recurring but does not present an immediate safety risk warranting same-day escalation.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM006",
+      "category_hit": true,
+      "category_agent": "approval_request",
+      "category_label": "approval_request",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": true,
+      "authority_label": true,
+      "rules_cited": [
+        "7.2"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 31 Owner,\n\nThank you for getting in touch about your planned renovation at The Nicholson, 412 Nicholson Street, Carlton North.\n\nBefore you proceed, please be aware that Rule 7.2 (Hard Floor Coverings) of the owners corporation rules requires you to obtain the prior written approval of the owners corporation before installing hard floor coverings in your lot. As your lot is located above another lot, this rule applies to your situation.\n\nApproval may be granted subject to conditions \u2014 for example, the use of an acoustic underlay meeting a specified rating \u2014 to manage sound transmission to the lot below.\n\nTo progress your request, could you please provide the following in writing:\n\n1. The type of hard floor covering you intend to install (e.g. engineered timber, solid hardwood, hybrid).\n2. The rooms or areas where it will be laid.\n3. Details of any acoustic underlay you are proposing to use, including the product name and acoustic rating if known.\n\nYour request will be referred to the owners corporation committee for consideration. We will be in touch once a decision has been made.\n\nPlease do not commence any installation until written approval has been received.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 The Nicholson (PS540117J)",
+      "reasoning": "Rule 7.2 explicitly requires prior written approval from the owners corporation before hard floor coverings are installed in a lot above another lot. SCH002 is a Tier 2 scheme with an elected committee who must make the approval decision; the manager cannot grant it. Urgency is routine as no works have commenced and no safety or time-critical issue exists.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM007",
+      "category_hit": true,
+      "category_agent": "approval_request",
+      "category_label": "approval_request",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": true,
+      "authority_label": true,
+      "rules_cited": [
+        "2.3",
+        "7.1"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 19 Owner,\n\nThank you for getting in touch regarding your proposed air conditioning installation at Craigieburn Rise (22 Hanson Road, Craigieburn).\n\nBefore any work commences, please be aware of the following rules that apply to your request:\n\n**Rule 2.3 \u2013 Alterations to Common Property**\nAir conditioning condensers are specifically listed as items that must not be installed on or attached to common property without the prior written approval of the owners corporation. Whether the external wall near your courtyard forms part of common property or your lot boundary is a matter that will need to be confirmed, but we would ask you to proceed on the basis that approval is required before anything is fixed to any external surface.\n\n**Rule 7.1 \u2013 Notice of Works**\nIf the installation involves structural change, waterproofing, or works spanning more than 5 consecutive days, you are also required to give the owners corporation at least 14 days' written notice before commencing.\n\n**What to do next**\nPlease submit a formal written approval request to our office that includes:\n- Proposed location of the condenser unit (a plan or photograph would assist);\n- Details of the installer and any relevant licences;\n- Confirmation of any penetrations through external walls or roof;\n- Any council permits or building approvals obtained or pending.\n\nYour request will be referred to the committee for consideration. No work should commence until written approval has been granted by the owners corporation.\n\nWe will be in touch once the committee has had the opportunity to review your application.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 Craigieburn Rise (SCH003)",
+      "reasoning": "The owner is requesting approval to install an air conditioner condenser on an external wall, which Rule 2.3 explicitly identifies as requiring prior written owners corporation approval. As a Tier 3 scheme with an elected committee, this decision must go to the committee; the manager cannot grant approval. Rule 7.1 may also apply depending on the scope of works, so the owner has been advised of that obligation as well.",
+      "tool_calls": 3,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM008",
+      "category_hit": true,
+      "category_agent": "maintenance_common_property",
+      "category_label": "maintenance_common_property",
+      "urgency_hit": true,
+      "urgency_agent": "urgent",
+      "urgency_label": "urgent",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear A. Fictional,\n\nThank you for contacting us regarding your bathroom ceiling at Lot 12, Elara Residences (88 Kavanagh Street, Southbank).\n\nWe are treating this as urgent. Active water ingress that is worsening can cause significant structural damage and may present a safety hazard, so we will arrange for a plumber to attend and investigate the source as soon as possible. Please ensure the area is safe \u2014 if at any point you are concerned about structural safety or an electrical hazard, please vacate the affected area and call emergency services (000).\n\nIn the meantime, it would assist our investigation if you could:\n1. Take photographs and/or video of the affected area, noting the time and date.\n2. Place towels or a bucket to limit secondary damage where safe to do so.\n3. Let us know immediately if the situation worsens significantly.\n\nOnce the source is identified, we will be in a better position to confirm whether this is a common property matter (for example, a shared pipe or the structure) or one involving the lot above, and advise on next steps accordingly.\n\nWe will be in touch shortly with an update on the trades attendance.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager\nElara Residences \u2014 SCH001",
+      "reasoning": "Active and worsening water ingress overnight constitutes a situation getting materially worse by the hour, meeting the urgent threshold. The source is unconfirmed (common property pipe vs lot-above issue), so both categories are flagged; a plumber must attend before responsibility can be determined. No committee decision is required to dispatch emergency trades for an urgent leak \u2014 this falls within the manager's ordinary authority to protect common property and lot owners from escalating damage.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM009",
+      "category_hit": true,
+      "category_agent": "meeting_governance",
+      "category_label": "meeting_governance",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": false,
+      "authority_agent": true,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 8 Owner,\n\nThank you for your email regarding The Nicholson (PS540117J).\n\n**AGM Date**\nThe most recent AGM for The Nicholson was held on 20 October 2025. The next AGM is currently due by 20 October 2026. The precise date, time and venue will be confirmed in the formal notice of meeting, which will be issued to all lot owners in accordance with the required notice period under the Owners Corporations Act 2006. We will ensure you receive that notice at your registered email address.\n\n**Putting Forward a Motion \u2013 Bike Storage**\nOwners are generally able to submit motions for inclusion on an AGM agenda. However, we were unable to locate a specific rule in The Nicholson's registered rules setting out the submission process or deadline. We will raise your request with the committee so they can confirm:\n- The deadline by which owner-submitted motions must be received;\n- Any required format for the motion; and\n- Whether any works or changes to common property relating to bike storage would require a further committee or owners corporation resolution.\n\nWe will come back to you once we have the committee's guidance.\n\nIf you have any further questions in the meantime, please don't hesitate to get in touch.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 The Nicholson (PS540117J)",
+      "reasoning": "The email asks two routine governance questions: the AGM date (answerable from the scheme record \u2014 next due 20 October 2026) and the process for submitting a motion. No rule governing owner motion submissions was found after two search attempts, so the committee must confirm the process before the manager can advise. The bike storage topic is flagged as the subject of the proposed motion; no specific bike storage rule exists, but any change to common property would ordinarily require an OC resolution, which the committee should note. Urgency is routine as the AGM is roughly a year away.",
+      "tool_calls": 5,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules",
+        "search_oc_rules",
+        "search_oc_rules",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM010",
+      "category_hit": true,
+      "category_agent": "insurance",
+      "category_label": "insurance",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear F. Fictional,\n\nThank you for your email regarding your refinancing.\n\nWe are pleased to confirm that we hold a current building insurance policy for Craigieburn Rise (Plan No. PS703442C, 22 Hanson Road, Craigieburn VIC 3064) with the following details:\n\n  \u2022 Insurer: Fictional Mutual\n  \u2022 Policy Number: FM-5537-C\n  \u2022 Sum Insured: $14,200,000\n  \u2022 Renewal Date: 29 August 2026\n\nWe will arrange for a certificate of currency to be emailed to you directly from Fictional Mutual, or alternatively we can forward it to your lender on your behalf if you provide their email address.\n\nPlease let us know how you would like to proceed.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Craigieburn Rise (SCH003)",
+      "reasoning": "This is a straightforward insurance certificate of currency request from a confirmed owner (no arrears) for lender/refinancing purposes. No committee decision is required as issuing a certificate of currency is a standard administrative function; the policy details were retrieved directly from the scheme record.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM011",
+      "category_hit": true,
+      "category_agent": "insurance",
+      "category_label": "insurance",
+      "urgency_hit": true,
+      "urgency_agent": "priority",
+      "urgency_label": "priority",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [
+        "2.4"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear B. Fictional,\n\nThank you for getting in touch regarding storm damage to your balcony sliding door and carpet at Lot 47, Elara Residences.\n\nWe are sorry to hear about the damage and understand this is stressful. We want to give you some general guidance, though please note that we are unable to provide legal or insurance advice, and the ultimate determination of any claim rests with the relevant insurer(s).\n\nBuilding insurance\nElara Residences holds a building insurance policy with Fictional Mutual (Policy FM-8841-A). As a general principle under the Owners Corporations Act 2006, the building policy covers common property and the common structural fabric of the building. Whether a balcony sliding door \u2014 and damage caused by water ingress through it \u2014 falls within the building policy or is the lot owner's responsibility can depend on how the lot boundaries are defined in the plan of subdivision (PS612884K), and on the specific terms of the policy. We cannot make that determination on your behalf.\n\nContents and internal repairs\nUnder Rule 2.4 of the Owners Corporation Rules, repairs to items within a lot, including floor coverings, are the responsibility of the lot owner and are not the responsibility of the owners corporation. Carpet is therefore unlikely to be covered under the building policy and you may wish to contact your own contents insurer regarding the carpet.\n\nNext steps we recommend for you:\n1. Mitigate further damage now \u2014 if the seal is still failing, please use towels or temporary waterproofing and keep the area ventilated to reduce the risk of mould.\n2. Document everything \u2014 photograph the door seal, the water ingress point and all damaged items before any repairs are made.\n3. Contact Fictional Mutual directly \u2014 you may log a claim enquiry with our insurer, Fictional Mutual, quoting policy FM-8841-A, and they can advise whether the damage falls within the building policy.\n4. Contact your own contents insurer \u2014 regarding the carpet and any damaged personal belongings.\n5. Notify us in writing \u2014 if you believe the door itself (as part of the building structure) requires repair, please submit a formal written maintenance request to our office so we can assess responsibility and arrange inspection if appropriate under Rule 2.4.\n\nWe will follow up with Fictional Mutual on our end to seek preliminary guidance on where the lot boundary sits for balcony doors in this building.\n\nPlease do not hesitate to contact our office if you have any further questions.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Elara Residences (SCH001)",
+      "reasoning": "This is an insurance query with a secondary maintenance dimension. Urgency is priority because ongoing water ingress after a storm can cause progressively worsening damage (mould, structural moisture) if not addressed within days; however it does not meet the urgent threshold as there is no immediate safety risk reported. No rules specifically address balcony door boundary or insurance coverage, so the draft carefully avoids giving a definitive coverage ruling, directs the owner to the insurer, and flags the carpet as likely the owner's responsibility under Rule 2.4 without committing to a legal position. The lot owner is noted as being in arrears but this does not affect the substance of the reply. No committee decision is required at this stage.",
+      "tool_calls": 5,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner",
+        "search_oc_rules",
+        "search_oc_rules",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM012",
+      "category_hit": true,
+      "category_agent": "meeting_governance",
+      "category_label": "meeting_governance",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 3 Owner,\n\nThank you for your email regarding maintenance plans for Mercer Lane Terraces (PS331076F).\n\nI can confirm that, based on the scheme's current classification under the Owners Corporations Act 2006, your owners corporation is a Tier 4 scheme (3\u20139 occupiable lots, not services only). Under the obligations that attach to Tier 4, a maintenance plan and maintenance fund are NOT statutorily required for your scheme.\n\nThe other owner may be thinking of Tier 1 or Tier 2 schemes (those with 10 or more occupiable lots), for which a maintenance plan is compulsory. At six lots, Mercer Lane Terraces sits below that threshold.\n\nThat said, the owners corporation is of course free to adopt a maintenance plan voluntarily if the lot owners decide it would be beneficial \u2014 for example, to plan ahead for the shared driveway and bin area. That would be a matter for a general meeting, as the scheme does not currently have an elected committee.\n\nIf you have further questions, please don't hesitate to get in touch.\n\nKind regards,\nOwners Corporation Manager\nMercer Lane Terraces \u2013 SCH005",
+      "reasoning": "The scheme is Tier 4 (6 occupiable lots, not services only), for which the Act explicitly does not require a maintenance plan or fund \u2014 confirmed directly from the scheme record. No committee exists so decisions go to a general meeting, but no decision is needed here as this is a factual query with a clear answer.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM013",
+      "category_hit": true,
+      "category_agent": "meeting_governance",
+      "category_label": "meeting_governance",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Owner of Lot 103,\n\nThank you for your email regarding the maintenance plan for Elara Residences (88 Kavanagh Street, Southbank).\n\nTo answer both of your questions:\n\n1. Are we required to have one? Yes. Elara Residences is a Tier 1 owners corporation (more than 100 occupiable lots, not services-only), and under the Owners Corporations Act 2006 (Vic), a maintenance plan is a mandatory obligation for Tier 1 schemes.\n\n2. Do we have one? Yes. The owners corporation has an approved maintenance plan in place, most recently approved on 14 November 2025 at the Annual General Meeting.\n\nIf you would like a copy of the current maintenance plan, please let us know and we will arrange for one to be provided to you.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager\nOn behalf of the Owners Corporation \u2013 PS612884K",
+      "reasoning": "The scheme is Tier 1 (148 occupiable lots), which carries a statutory obligation to maintain a maintenance plan; the scheme record confirms one exists and was approved at the November 2025 AGM. No committee decision is needed as this is a factual status update requiring no approval or expenditure.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM014",
+      "category_hit": true,
+      "category_agent": "meeting_governance",
+      "category_label": "meeting_governance",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": false,
+      "authority_agent": true,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 55 Owner,\n\nThank you for your interest in nominating for the committee at the next meeting.\n\nBefore we go further, we want to make sure you have the right picture for your scheme. Harbour Quarter Services OC (SCH006) is a services-only owners corporation, which under the Owners Corporations Act 2006 sits at Tier 5. At this tier, the legislation does not require a committee to be elected, and the scheme does not currently have one.\n\nWhether to elect a committee is therefore a matter for the owners corporation itself to decide. We have searched the scheme's registered rules and were unable to locate any specific provisions governing committee nominations or election procedures for this scheme.\n\nWe will refer your request to the owners corporation for consideration. They may resolve at the next AGM (currently due by 30 September 2026) whether to form a committee, and if so, what nomination process to follow. We will be in touch once the owners corporation has had an opportunity to consider this.\n\nIf you have any further questions in the meantime, please do not hesitate to contact us.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 Harbour Quarter Services OC",
+      "reasoning": "SCH006 is a services-only (Tier 5) owners corporation, meaning a committee is not required by law and none is currently elected. No rules governing nominations were found after two searches. Whether to form a committee at all requires an owners corporation decision, so requires_committee_decision is set to true. The matter is not time-sensitive and urgency is routine.",
+      "tool_calls": 3,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM015",
+      "category_hit": true,
+      "category_agent": "levy_query",
+      "category_label": "levy_query",
+      "urgency_hit": true,
+      "urgency_agent": "priority",
+      "urgency_label": "priority",
+      "authority_hit": true,
+      "authority_agent": true,
+      "authority_label": true,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear H. Fictional,\n\nThank you for getting in touch and for letting us know about your current circumstances. We appreciate your honesty and are sorry to hear you have been experiencing financial difficulty.\n\nOur records confirm that Lot 2 at Wattle Court (9 Wattle Grove, Preston VIC 3072) carries an outstanding levy balance of $310.00, which is currently in arrears.\n\nA payment plan is not something the manager can approve unilaterally \u2014 it requires a decision by the committee. We will refer your request to the three-member committee as soon as possible and ask them to consider a suitable arrangement.\n\nIn the meantime, if you are able to make even a partial payment, that would be noted positively when the committee reviews your request.\n\nWe will be in touch once the committee has had the opportunity to consider the matter. If you have any questions in the meantime, please don't hesitate to contact us.\n\nKind regards,\nOwners Corporation Manager\nWattle Court \u2014 SCH004",
+      "reasoning": "The owner has self-reported financial hardship (reduced income) and the confirmed arrears balance matches their estimate at $310.00, making this priority urgency per the hardship rule. Approving a payment plan requires a committee decision; the manager cannot commit to one unilaterally, so requires_committee_decision is true. No rules govern levy payment plans directly, so none are cited.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM016",
+      "category_hit": true,
+      "category_agent": "maintenance_common_property",
+      "category_label": "maintenance_common_property",
+      "urgency_hit": false,
+      "urgency_agent": "priority",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [
+        "6.1"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Owner of Lot 31,\n\nThank you for getting in touch regarding the bin room at The Nicholson (412 Nicholson Street, Carlton North).\n\nWe are sorry to hear about the overflow and odour issue. We will follow up with the waste collection contractor promptly to confirm the current collection schedule and to establish whether any collections have been missed or delayed.\n\nIn the meantime, we would like to remind all residents that under Rule 6.1 of the Owners Corporation Rules, rubbish must be placed inside the bins provided and must not be left in corridors, bin rooms or bin enclosures outside the bins. If other residents are leaving excess rubbish outside the bins, this would constitute a breach of the rules, and we will address that separately if needed.\n\nWe will update you once we have spoken to the contractor and assessed the situation. If you notice the situation worsening in the meantime, please do not hesitate to contact us again.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 The Nicholson (PS540117J)",
+      "reasoning": "An overflowing, malodorous bin room since the weekend is a building amenity and hygiene issue on common property that warrants prompt action this week (priority), but it is not an immediate safety emergency. Rule 6.1 covers rubbish disposal obligations on residents; the manager can follow up with the waste contractor without requiring a committee decision.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM017",
+      "category_hit": true,
+      "category_agent": "rules_breach_complaint",
+      "category_label": "rules_breach_complaint",
+      "urgency_hit": true,
+      "urgency_agent": "priority",
+      "urgency_label": "priority",
+      "authority_hit": true,
+      "authority_agent": true,
+      "authority_label": true,
+      "rules_cited": [
+        "3.1",
+        "3.2"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 12 Owner,\n\nThank you for contacting us regarding the unauthorised vehicle in bay 12.\n\nWe take parking breaches seriously. Rule 3.1 of the Elara Residences Owners Corporation rules states that a lot owner or occupier must park only in the car space allocated to their lot. An unregistered vehicle occupying your allocated space for two days is a clear breach of that rule.\n\nWe have logged this as a rules breach complaint and will be referring the matter to the committee promptly. The committee will need to authorise any enforcement action, including any arrangement for the vehicle to be removed. We will provide an update as soon as we have committee direction.\n\nIn the meantime, if you are able to identify the vehicle or its owner (for example, if it belongs to another lot), please let us know as this may help resolve the matter more quickly.\n\nWe appreciate your patience while this is being progressed.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Elara Residences (PS612884K)",
+      "reasoning": "An unregistered vehicle in an allocated lot space is a direct breach of Rule 3.1 and has caused ongoing practical inconvenience to the lot owner for two days, warranting priority urgency. Towing or formal enforcement requires committee authorisation; this cannot be committed to in the draft reply.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM018",
+      "category_hit": true,
+      "category_agent": "insurance",
+      "category_label": "insurance",
+      "urgency_hit": true,
+      "urgency_agent": "priority",
+      "urgency_label": "priority",
+      "authority_hit": true,
+      "authority_agent": true,
+      "authority_label": true,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 19 Owner,\n\nThank you for your email regarding the insurance renewal for Craigieburn Rise (PS703442C).\n\nYou are correct that the current policy with Fictional Mutual (Policy FM-5537-C) is due for renewal on 29 August 2026. We appreciate you raising the question of whether to go to market \u2014 this is exactly the kind of decision that should rest with the committee and, depending on the outcome, potentially the owners corporation as a whole.\n\nWe will raise the following options with the committee for their direction:\n\n1. Approach the incumbent insurer (Fictional Mutual) for a renewal quotation only; or\n2. Conduct a broader market review by obtaining competing quotations before committing to renewal.\n\nGiven the premium increase experienced last year, the committee may wish to consider option 2 to ensure the owners corporation is receiving competitive terms. However, that decision is theirs to make.\n\nWe will put this to the committee promptly given the renewal date is approaching, and we will keep you informed of the outcome.\n\nPlease do not hesitate to contact us if you have any further questions.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager\nCraigieburn Rise \u2013 PS703442C",
+      "reasoning": "The renewal date of 29 August 2026 is approaching (flagged in scheme notes), making this a real near-term deadline with financial consequence if it lapses \u2014 hence priority. The decision to go to market or simply renew is a committee matter; the manager cannot commit either way, so requires_committee_decision is true. No rules are relevant to an insurance procurement question.",
+      "tool_calls": 1,
+      "tools_used": [
+        "get_scheme"
+      ]
+    },
+    {
+      "id": "EM019",
+      "category_hit": true,
+      "category_agent": "escalate_immediately",
+      "category_label": "escalate_immediately",
+      "urgency_hit": true,
+      "urgency_agent": "urgent",
+      "urgency_label": "urgent",
+      "authority_hit": true,
+      "authority_agent": true,
+      "authority_label": true,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": false,
+      "draft_reply": "",
+      "reasoning": "The owner reports a threat made against their wife in the common property car park \u2014 this is a potential personal safety risk that requires urgent human review today, not an automated draft reply. Additionally, the owner is asking for legal advice, which the manager must never provide; this must be referred immediately to the committee and, if appropriate, the OC's legal advisers. A human manager must make first contact, assess the safety situation, and advise the committee.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM020",
+      "category_hit": false,
+      "category_agent": "escalate_immediately",
+      "category_label": "rules_breach_complaint",
+      "urgency_hit": true,
+      "urgency_agent": "urgent",
+      "urgency_label": "urgent",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [
+        "1.2",
+        "1.1"
+      ],
+      "bad_citations": [],
+      "drafted": false,
+      "draft_reply": "",
+      "reasoning": "A fire door propped open in a 148-lot Tier 1 high-rise is an active life-safety risk: it compromises fire compartmentalisation and the egress path for the entire level. Rule 1.2 explicitly prohibits propping open fire doors and Rule 1.1 prohibits obstruction of fire egress paths. This must be escalated immediately to a human manager to physically inspect, contact the building's fire safety service provider or relevant authority if required, and act today \u2014 it cannot wait for a drafted email or committee decision.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM021",
+      "category_hit": true,
+      "category_agent": "oc_certificate_request",
+      "category_label": "oc_certificate_request",
+      "urgency_hit": false,
+      "urgency_agent": "priority",
+      "urgency_label": "urgent",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Agent,\n\nThank you for following up regarding the Owners Corporation Certificate for Lot 103, Elara Residences (Plan PS612884K), 88 Kavanagh Street, Southbank VIC 3006.\n\nWe acknowledge the urgency given your Thursday deadline for the purchaser's solicitor. We are treating this as a priority and will action the certificate as soon as possible. We will be in touch shortly with an update on the expected delivery timeframe.\n\nIf you have any further questions in the meantime, please do not hesitate to contact our office.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 Elara Residences (SCH001)",
+      "reasoning": "This is a straightforward OC certificate request with a confirmed deadline of Thursday (days away), giving it clear priority urgency. No committee decision is required as issuing an OC certificate is a standard statutory obligation of the manager. The lot has no arrears, which is relevant information the manager will have available when preparing the certificate.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    },
+    {
+      "id": "EM022",
+      "category_hit": true,
+      "category_agent": "maintenance_private_lot",
+      "category_label": "maintenance_private_lot",
+      "urgency_hit": false,
+      "urgency_agent": "priority",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [
+        "2.4"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear E. Fictional,\n\nThank you for getting in touch regarding the loss of hot water at Lot 31, The Nicholson, 412 Nicholson Street, Carlton North.\n\nAs the hot water unit is located within your apartment (inside your laundry cupboard), it forms part of your private lot rather than common property. Under Rule 2.4 of the Owners Corporation Rules, repairs to internal appliances are the responsibility of the lot owner and are not the responsibility of the owners corporation.\n\nThis means you will need to arrange and meet the cost of a licensed plumber or hot water specialist directly. You may wish to contact a 24-hour plumbing service given you have been without hot water since yesterday morning.\n\nIf you have any reason to believe the fault originates from a common property water supply or riser rather than the unit itself, please let us know and we can investigate that aspect further.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 The Nicholson (PS540117J)",
+      "reasoning": "The hot water unit is self-contained inside the lot (laundry cupboard within the apartment), so Rule 2.4 makes it the owner's responsibility to repair. Urgency is rated priority rather than routine because being without hot water for more than 24 hours is a significant amenity issue that warrants prompt attention, though it does not present an immediate safety risk to a person.",
+      "tool_calls": 3,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM023",
+      "category_hit": true,
+      "category_agent": "approval_request",
+      "category_label": "approval_request",
+      "urgency_hit": true,
+      "urgency_agent": "routine",
+      "urgency_label": "routine",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [
+        "5.1",
+        "5.2"
+      ],
+      "bad_citations": [],
+      "drafted": true,
+      "draft_reply": "Dear Lot 4 Owner,\n\nThank you for your email, and congratulations on your new puppy Biscuit!\n\nYou are correct that there is an obligation regarding pets at Craigieburn Rise. Under Rule 5.1 (Keeping of animals), any lot owner or occupier who keeps an animal must notify the owners corporation in writing within 14 days, providing the animal's type, breed and name. This is a notification requirement rather than an approval process \u2014 so please simply reply to this email (or write to us separately) confirming Biscuit's type, breed and name, and we will note her on our records.\n\nWe would also draw your attention to Rule 5.2 (Animals on common property), which requires that:\n- Animals are under effective control on common property at all times;\n- Dogs are on a lead when on common property; and\n- Any animal waste is immediately removed and disposed of by the owner.\n\nThe 14-day notification window runs from the date you acquired Biscuit, so please send through the written notification as soon as you can.\n\nIf you have any further questions, please don't hesitate to get in touch.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Craigieburn Rise (SCH003)",
+      "reasoning": "The owner is asking about a pet registration/notification obligation. Rule 5.1 confirms a written notification within 14 days is required (type, breed and name); Rule 5.2 sets out on-common-property conduct obligations. This is a straightforward informational response \u2014 no committee decision is needed as the rules are self-executing and no approval is required, only a notification.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "search_oc_rules"
+      ]
+    },
+    {
+      "id": "EM024",
+      "category_hit": true,
+      "category_agent": "escalate_immediately",
+      "category_label": "escalate_immediately",
+      "urgency_hit": true,
+      "urgency_agent": "urgent",
+      "urgency_label": "urgent",
+      "authority_hit": true,
+      "authority_agent": false,
+      "authority_label": false,
+      "rules_cited": [],
+      "bad_citations": [],
+      "drafted": false,
+      "draft_reply": "",
+      "reasoning": "The email contains a direct physical threat ('I'll be at your office tomorrow and you won't like it'), which raises personal safety concerns for staff that a human manager must assess before any contact is made. Additionally, the owner (B. Fictional, Lot 47) is in levy arrears of $1,840.50, and the underlying grievance is entirely unspecified across four alleged prior contacts \u2014 a human needs to review that correspondence history before any substantive response is drafted.",
+      "tool_calls": 2,
+      "tools_used": [
+        "get_scheme",
+        "get_lot_owner"
+      ]
+    }
+  ]
+}

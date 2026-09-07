@@ -1,0 +1,96 @@
+{
+  "items": [
+    {
+      "queue_id": "Q001",
+      "email_id": "EM001",
+      "queued_at": "2026-09-07T10:13:44",
+      "status": "approved",
+      "email": {
+        "scheme_id": "SCH001",
+        "lot": 12,
+        "from": "lot12@example.invalid",
+        "subject": "Lift out of service again",
+        "body": "Hi, the south lift has been out of service since Friday afternoon. This is the third time in two months. I'm on level 14 and my mother uses a walking frame. Can someone tell me when it will be fixed?"
+      },
+      "agent": {
+        "category": "maintenance_common_property",
+        "secondary_category": null,
+        "urgency": "urgent",
+        "requires_committee_decision": false,
+        "rules_cited": [],
+        "reasoning": "The south lift is documented common property in a 148-lot high-rise (Tier 1). A resident on level 14 with a mobility-impaired family member has been without lift access since Friday, creating an immediate accessibility and safety risk that is already present and could worsen \u2014 this meets the 'safety risk to a person' threshold for urgent. No committee decision is needed to chase the contractor for a repair status update or to acknowledge the owner's concern.",
+        "tool_calls": 1
+      },
+      "original_draft": "Dear Lot 12 Owner,\n\nThank you for contacting us regarding the south lift at Elara Residences, 88 Kavanagh Street, Southbank.\n\nWe are sorry to hear the south lift has been out of service since Friday and understand the significant inconvenience this causes, particularly given your mother's mobility needs on level 14.\n\nWe are treating this as an urgent matter. We are following up with our lift maintenance contractor immediately to obtain a status update and an estimated time for restoration of service, and will come back to you as soon as we have that information.\n\nWe also note this is the third outage in two months. We will be reviewing the service history with the contractor to address the recurring nature of the problem.\n\nIn the meantime, please do not hesitate to contact us if the situation becomes an emergency.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Elara Residences (SCH001)",
+      "final_draft": "Dear Lot 12 Owner,\n\nThank you for contacting us regarding the south lift at Elara Residences, 88 Kavanagh Street, Southbank.\n\nWe are sorry to hear the south lift has been out of service since Friday and understand the significant inconvenience this causes, particularly given your mother's mobility needs on level 14.\n\nWe are treating this as an urgent matter. We are following up with our lift maintenance contractor immediately to obtain a status update and an estimated time for restoration of service, and will come back to you as soon as we have that information.\n\nWe also note this is the third outage in two months. We will be reviewing the service history with the contractor to address the recurring nature of the problem.\n\nIn the meantime, please do not hesitate to contact us if the situation becomes an emergency.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 Elara Residences (SCH001)",
+      "review": {
+        "decision": "approved",
+        "reviewed_at": "2026-09-07T10:23:06",
+        "reason": null,
+        "edited": false
+      }
+    },
+    {
+      "queue_id": "Q002",
+      "email_id": "EM002",
+      "queued_at": "2026-09-07T10:14:01",
+      "status": "approved",
+      "email": {
+        "scheme_id": "SCH003",
+        "lot": 4,
+        "from": "lot4@example.invalid",
+        "subject": "Dishwasher leaking",
+        "body": "My dishwasher has been leaking under the kitchen cabinet and the floor is starting to swell. Can you send a plumber please."
+      },
+      "agent": {
+        "category": "maintenance_private_lot",
+        "secondary_category": "maintenance_common_property",
+        "urgency": "priority",
+        "requires_committee_decision": false,
+        "rules_cited": [
+          "2.2"
+        ],
+        "reasoning": "A leaking dishwasher and swelling kitchen floor are private lot maintenance matters requiring no committee decision; no expenditure or approval by the owners corporation is sought. Urgency is elevated to priority (not urgent) because active water damage is getting materially worse and financial harm will compound quickly if the owner delays, but there is no immediate safety risk or external deadline.",
+        "tool_calls": 3
+      },
+      "original_draft": "Dear F. Fictional,\n\nThank you for getting in touch regarding the leaking dishwasher at Lot 4, 22 Hanson Road, Craigieburn.\n\nAs the dishwasher and the kitchen cabinetry and flooring within your lot are private lot fixtures, the responsibility for arranging and funding repairs to those elements rests with you as the lot owner. We are therefore unable to send a plumber on behalf of the owners corporation for this matter. We recommend you engage a licensed plumber as soon as possible to stop the leak and prevent further damage.\n\nWe do ask that you monitor the situation carefully. If any water has migrated to common property areas \u2014 for example, shared flooring, subfloor structure, or external walls \u2014 please let us know immediately, as the owners corporation has responsibility for common property. Please also be aware that under the scheme rules (Rule 2.2), a lot owner is responsible for the cost of repairing any damage caused to common property.\n\nIf you need a referral to a licensed plumber, we are happy to assist.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 Craigieburn Rise (SCH003)",
+      "final_draft": "Dear F. Fictional,\n\nThank you for getting in touch regarding the leaking dishwasher at Lot 4, 22 Hanson Road, Craigieburn.\n\nAs the dishwasher and the kitchen cabinetry and flooring within your lot are private lot fixtures, the responsibility for arranging and funding repairs to those elements rests with you as the lot owner. We are therefore unable to send a plumber on behalf of the owners corporation for this matter. We recommend you engage a licensed plumber as soon as possible to stop the leak and prevent further damage.\n\nWe do ask that you monitor the situation carefully. If any water has migrated to common property areas \u2014 for example, shared flooring, subfloor structure, or external walls \u2014 please let us know immediately, as the owners corporation has responsibility for common property. Please also be aware that under the scheme rules (Rule 2.2), a lot owner is responsible for the cost of repairing any damage caused to common property.\n\nIf you need a referral to a licensed plumber, we are happy to assist.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2013 Craigieburn Rise (SCH003)",
+      "review": {
+        "decision": "approved",
+        "reviewed_at": "2026-09-07T10:23:34",
+        "reason": null,
+        "edited": false
+      }
+    },
+    {
+      "queue_id": "Q003",
+      "email_id": "EM003",
+      "queued_at": "2026-09-07T10:14:17",
+      "status": "approved",
+      "email": {
+        "scheme_id": "SCH002",
+        "lot": 8,
+        "from": "conveyancing@example.invalid",
+        "subject": "OC certificate request - Lot 8, PS540117J",
+        "body": "Good morning, we act for the vendor of Lot 8 and require an owners corporation certificate for the section 32 statement. Settlement is scheduled and the contract goes out next week. Please advise the fee and your preferred payment method."
+      },
+      "agent": {
+        "category": "oc_certificate_request",
+        "secondary_category": "levy_query",
+        "urgency": "priority",
+        "requires_committee_decision": false,
+        "rules_cited": [],
+        "reasoning": "This is a straightforward OC certificate request ahead of a section 32 disclosure; no committee decision is required as issuing a certificate and stating facts is an administrative function. Urgency is priority (not urgent) because the contract goes out next week, creating a real deadline within days, but there is no indication that settlement itself falls within 48 hours.",
+        "tool_calls": 2
+      },
+      "original_draft": "Dear Conveyancer,\n\nThank you for your email regarding Lot 8, PS540117J (The Nicholson, 412 Nicholson Street, Carlton North VIC 3054).\n\nWe can confirm we are the appointed manager for this owners corporation and are able to prepare the required owners corporation certificate. Please note the following before we proceed:\n\n**Fee and payment**\nWe will confirm our current certificate fee and preferred payment method separately \u2014 please allow us to come back to you on this shortly, or contact our office directly if you need this information urgently given your timeline.\n\n**Lot 8 levy status**\nFor your information, the lot is not currently in arrears.\n\n**Matters you may wish to note for the section 32 disclosure**\n- The scheme is a Tier 2 owners corporation (72 occupiable lots).\n- A maintenance plan exists; however, it has not yet been approved by the owners corporation. You may wish to note this in your disclosure.\n- The insurance policy is held with Fictional Mutual, policy FM-2210-B, with a sum insured of $41,000,000 and a renewal date of 12 September 2026.\n- The last AGM was held on 20 October 2025; the next AGM is due by 20 October 2026.\n\nPlease provide your best contact details and confirm any specific deadline for receipt of the certificate so we can prioritise accordingly.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 The Nicholson (SCH002)",
+      "final_draft": "Dear Conveyancer,\n\nThank you for your email regarding Lot 8, PS540117J (The Nicholson, 412 Nicholson Street, Carlton North VIC 3054).\n\nWe can confirm we are the appointed manager for this owners corporation and are able to prepare the required owners corporation certificate. Please note the following before we proceed:\n\n**Fee and payment**\nWe will confirm our current certificate fee and preferred payment method separately \u2014 please allow us to come back to you on this shortly, or contact our office directly if you need this information urgently given your timeline.\n\n**Lot 8 levy status**\nFor your information, the lot is not currently in arrears.\n\n**Matters you may wish to note for the section 32 disclosure**\n- The scheme is a Tier 2 owners corporation (72 occupiable lots).\n- A maintenance plan exists; however, it has not yet been approved by the owners corporation. You may wish to note this in your disclosure.\n- The insurance policy is held with Fictional Mutual, policy FM-2210-B, with a sum insured of $41,000,000 and a renewal date of 12 September 2026.\n- The last AGM was held on 20 October 2025; the next AGM is due by 20 October 2026.\n\nPlease provide your best contact details and confirm any specific deadline for receipt of the certificate so we can prioritise accordingly.\n\nKind regards,\nFictional Strata Partners Pty Ltd\nOwners Corporation Manager \u2014 The Nicholson (SCH002)",
+      "review": {
+        "decision": "approved",
+        "reviewed_at": "2026-09-07T10:26:39",
+        "reason": null,
+        "edited": false
+      }
+    }
+  ]
+}

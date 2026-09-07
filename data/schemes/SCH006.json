@@ -1,0 +1,49 @@
+{
+  "scheme_id": "SCH006",
+  "plan_number": "PS629915T",
+  "name": "Harbour Quarter Services OC",
+  "address": "1 Bourke Street, Docklands VIC 3008",
+  "occupiable_lots": 140,
+  "services_only": true,
+  "manager_appointed": true,
+  "manager_name": "Fictional Strata Partners Pty Ltd",
+  "committee_elected": false,
+  "committee_members": 0,
+  "annual_fees_levied": true,
+  "annual_fee_total_aud": 305000,
+  "maintenance_plan": {
+    "exists": false,
+    "approved": false,
+    "last_approved": null
+  },
+  "insurance": {
+    "insurer": "Fictional Mutual",
+    "policy_number": "FM-9043-F",
+    "renewal_date": "2026-09-30",
+    "sum_insured_aud": 0
+  },
+  "financials": {
+    "last_checked": null,
+    "method": "neither"
+  },
+  "agm": {
+    "last_held": "2025-09-30",
+    "next_due": "2026-09-30"
+  },
+  "common_property": [
+    "shared water supply",
+    "shared fire services",
+    "access road"
+  ],
+  "notes": "TRAP CASE. 140 lots but services only, so tier 5 not tier 1.",
+  "lot_owners": [
+    {
+      "lot": 55,
+      "name": "K. Fictional",
+      "email": "lot55@example.invalid",
+      "levy_balance_aud": 0.0,
+      "in_arrears": false,
+      "owner_occupier": false
+    }
+  ]
+}

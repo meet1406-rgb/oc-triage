@@ -1,0 +1,48 @@
+{
+  "scheme_id": "SCH005",
+  "plan_number": "PS331076F",
+  "name": "Mercer Lane Terraces",
+  "address": "5 Mercer Lane, Brunswick VIC 3056",
+  "occupiable_lots": 6,
+  "services_only": false,
+  "manager_appointed": false,
+  "manager_name": null,
+  "committee_elected": false,
+  "committee_members": 0,
+  "annual_fees_levied": true,
+  "annual_fee_total_aud": 18400,
+  "maintenance_plan": {
+    "exists": false,
+    "approved": false,
+    "last_approved": null
+  },
+  "insurance": {
+    "insurer": "Fictional Mutual",
+    "policy_number": "FM-7702-E",
+    "renewal_date": "2026-12-03",
+    "sum_insured_aud": 3100000
+  },
+  "financials": {
+    "last_checked": null,
+    "method": "neither"
+  },
+  "agm": {
+    "last_held": "2025-12-03",
+    "next_due": "2026-12-03"
+  },
+  "common_property": [
+    "shared driveway",
+    "bin area"
+  ],
+  "notes": "Tier 4. No committee, decisions made by the OC in general meeting.",
+  "lot_owners": [
+    {
+      "lot": 3,
+      "name": "J. Fictional",
+      "email": "lot3@example.invalid",
+      "levy_balance_aud": 0.0,
+      "in_arrears": false,
+      "owner_occupier": true
+    }
+  ]
+}
