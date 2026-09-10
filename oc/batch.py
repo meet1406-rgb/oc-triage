@@ -34,7 +34,14 @@ from datetime import datetime
 from dotenv import load_dotenv
 import anthropic
 
-from oc.agent import run_agent, DATA_PATH
+import sys as _sys
+if "--graph" in _sys.argv:
+    from oc.graph_agent import run_agent
+    from oc.agent import DATA_PATH
+    VERSION = "langgraph"
+else:
+    from oc.agent import run_agent, DATA_PATH
+    VERSION = "custom"
 from oc.tools import list_all_rules
 from oc.grounding import check_grounding
 load_dotenv()
@@ -183,6 +190,7 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump({
             "timestamp": stamp,
+            "version": VERSION,
             "emails_scored": n,
             "errors": errors,
             "summary": {
