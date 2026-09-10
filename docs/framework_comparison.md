@@ -80,6 +80,37 @@ agent loop, where it is a stylistic preference, but in the human in the loop
 step, where it replaces something I had to build myself and adds capability I
 had not built.
 
+## V2 with interrupt and checkpointing
+
+graph_review.py adds four nodes to the port: parse, grounding,
+human_review, finalise. human_review calls interrupt(), which
+stops the graph and persists its entire state to SQLite.
+
+Demonstrated resumability: started EM023, closed the terminal,
+opened a new one, and `show EM023` returned the full draft,
+classification, cited rules and tool calls, read back from
+data/checkpoints.db. Approved from the new process; the graph
+resumed at human_review and ran to finalise.
+
+This is what V1 could not do. V1 stored drafts in queue.json,
+but the agent itself had no notion of being mid-run. There was
+nothing to resume - only a draft to re-read.
+
+Grounding now runs as a node BEFORE human_review, so an
+unsupported claim is flagged on the review screen rather than
+left for the reviewer to catch by reading carefully. That
+matters, given I approved a draft with invented facts when
+reviewing V1 by eye.
+
+The finalise node deliberately does nothing. If this project
+ever sent email, that is the node where it would happen, and it
+is the node that does not exist.
+
+Note on re-execution: when a graph resumes, the interrupted node
+runs again from the top and interrupt() returns the resume value
+instead of pausing. Anything before the interrupt() call runs
+twice, so that node must stay free of side effects.
+
 ---
 
 ## Something the comparison surfaced by accident
