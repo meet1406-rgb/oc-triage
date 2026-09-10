@@ -15,6 +15,10 @@ and routes every one to a human for approval.
 | Citation validity | 100% |
 | Grounding | 100% |
 
+Built twice: once as a hand-written tool-calling loop, once as a LangGraph
+graph. The framework changed nothing measurable — same accuracy, same
+failures, same emails. See [docs/framework_comparison.md](docs/framework_comparison.md).
+
 Measured over 5 runs on a 40-email development set. Ranges are the
 observed spread across identical runs, not confidence intervals. A
 20-email holdout set exists and has not been scored yet.
@@ -133,6 +137,8 @@ model errors.** Documented rather than papered over.
 **The agent fetches owner data it does not use.** Instructions changed what
 it says, not what it looks up. In a system with real data that is still an
 unnecessary access to a financial record.
+Full experiment log, including the fixes that failed, is in
+[docs/failure_analysis.md](docs/failure_analysis.md).
 
 ---
 
@@ -192,22 +198,23 @@ python -m oc.review # review drafts one at a time
 ## Repository
 
 oc/
-tiers.py tier thresholds and obligations, hardcoded from CAV
-tools.py get_scheme, get_lot_owner, search_oc_rules
-classify.py single-call classifier (no tools) - the baseline
-agent.py the agent loop
-batch.py run and score every email
-grounding.py checks claims against tool calls
-queue.py builds the approval queue
-review.py approve / edit / reject CLI
+  tiers.py       tier thresholds and obligations, hardcoded from CAV
+  tools.py       get_scheme, get_lot_owner, search_oc_rules
+  classify.py    single-call classifier (no tools) - the baseline
+  agent.py       V1 - the hand-written agent loop
+  graph_agent.py V2 - the same agent as a LangGraph graph
+  batch.py       run and score every email
+  grounding.py   checks claims against tool calls
+  queue.py       builds the approval queue
+  review.py      approve / edit / reject CLI
 data/
-schemes/ six fictional owners corporations, tiers 1 to 5
-rules/ 23 fictional scheme rules
-emails/ 40 dev + 20 holdout, labelled
+  schemes/       six fictional owners corporations, tiers 1 to 5
+  rules/         23 fictional scheme rules
+  emails/        40 dev + 20 holdout, labelled
 docs/
-failure_analysis.md every experiment, including the ones that failed
-eval/results/ every scored run, timestamped
-
+  failure_analysis.md       every experiment, including the ones that failed
+  framework_comparison.md   V1 vs V2, same eval, same dataset
+eval/results/               every scored run, timestamped
 
 Sources for the tier framework: Consumer Affairs Victoria, *Tiers of owners
 corporations*. Everything else is invented.
