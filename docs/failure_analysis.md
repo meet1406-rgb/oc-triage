@@ -403,3 +403,18 @@ Options not taken: rename the category (oc_certificate_request ->
 sale_disclosure_request) to remove the collision, or handle it in
 code with a keyword pre-check. Both would work. Neither was tried
 because the finding is more useful than the fix.
+## Checkpointed threads are not reusable
+
+Tried to re-run EM023 after it had been approved. The thread's
+message history was still in SQLite, so the new system message
+appended to the old conversation and the API rejected it:
+"Received multiple non-consecutive system messages".
+
+This is the cost of persistence. In V1, re-running an email was
+free because nothing was kept. In V2 a thread_id is a case, not
+a command, and a completed case cannot be restarted.
+
+Fixed by refusing to start a thread that already carries a
+decision. The alternative would be versioned thread ids
+(EM023-run2), which would work but would quietly hide that a
+case had been reviewed twice.

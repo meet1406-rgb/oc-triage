@@ -214,8 +214,17 @@ def start(email_id):
     graph = build_graph()
     cfg = config_for(email["id"])
 
-    if graph.get_state(cfg).next:
+    snap = graph.get_state(cfg)
+    if snap.next:
         print("%s is already in progress. Use show/approve/reject." % email["id"])
+        return
+    if snap.values.get("decision"):
+        # The thread already holds a completed conversation. Starting again
+        # would append a second system message to that history, which the API
+        # rejects. State persisting is the point of the checkpointer; the cost
+        # is that a thread is not reusable.
+        print("%s was already %s on %s. Threads are not reusable."
+              % (email["id"], snap.values["decision"], snap.values.get("reviewed_at")))
         return
 
     system = build_system_prompt(data["categories"], data["urgency_definitions"])

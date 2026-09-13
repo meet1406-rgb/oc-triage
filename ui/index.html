@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OC Triage — correspondence review</title>
+<style>
+  :root {
+    --paper: #fffefa;
+    --background: #eeefeb;
+    --text: #272e2b;
+    --secondary-text: #626b65;
+    --border: #d8dcd5;
+    --quiet-surface: #f4f5f0;
+    --warning-text: #8c3524;
+    --warning-surface: #fff1e9;
+    --primary: #303d35;
+    --primary-text: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--background); color: var(--text);
+         font: 14px/1.6 'Segoe UI', Arial, sans-serif; }
+
+  .app-header { display: flex; align-items: baseline; gap: 12px;
+                padding: 18px 28px; border-bottom: 1px solid var(--border);
+                background: var(--paper); }
+  .app-header .name { font-size: 15px; font-weight: 600; }
+  .app-header .context { font-size: 13px; color: var(--secondary-text); }
+
+  .page { max-width: 880px; margin: 0 auto; padding: 32px 28px 60px; }
+  .page h1 { font-size: 19px; font-weight: 600; margin: 0 0 20px; }
+
+  table.inbox { width: 100%; border-collapse: collapse; background: var(--paper);
+                border: 1px solid var(--border); border-radius: 4px; }
+  table.inbox th { text-align: left; font-size: 11px; font-weight: 600;
+                   letter-spacing: .06em; text-transform: uppercase;
+                   color: var(--secondary-text); padding: 11px 16px;
+                   border-bottom: 1px solid var(--border); }
+  table.inbox td { padding: 13px 16px; border-bottom: 1px solid var(--border); }
+  table.inbox tr:last-child td { border-bottom: 0; }
+  td.case-id { font-size: 13px; color: var(--secondary-text); width: 90px; }
+  td.status  { font-size: 13px; color: var(--secondary-text); width: 210px; }
+  tr.done td { color: var(--secondary-text); }
+
+  button.subject-link { background: none; border: 0; padding: 0; font: inherit;
+    color: var(--text); text-align: left; cursor: pointer; text-decoration: underline;
+    text-underline-offset: 3px; text-decoration-color: var(--border); }
+  button.subject-link:hover { text-decoration-color: var(--secondary-text); }
+  button.subject-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+  span.plain-subject { color: var(--secondary-text); }
+
+  .demo-note { margin-top: 18px; font-size: 12px; color: var(--secondary-text); }
+  .loading { padding: 30px 0; color: var(--secondary-text); font-size: 14px; }
+
+  dialog.review { padding: 0; border: 0; border-radius: 8px; background: var(--paper);
+    color: var(--text); width: 620px; max-width: calc(100vw - 40px); max-height: 88vh;
+    box-shadow: 0 18px 44px rgba(0,0,0,.22); }
+  dialog.review[open] { display: flex; flex-direction: column; }
+  dialog.review::backdrop { background: rgba(31,36,33,.5); }
+
+  .modal-header { display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .modal-header .who { font-size: 13px; color: var(--secondary-text); }
+  .modal-header .who strong { color: var(--text); font-weight: 600; }
+  .modal-header .position { font-size: 13px; color: var(--secondary-text); }
+  .header-right { display: flex; align-items: center; gap: 14px; }
+  button.close { background: none; border: 0; cursor: pointer; padding: 4px 8px;
+    font-size: 18px; line-height: 1; color: var(--secondary-text); }
+  button.close:hover { color: var(--text); }
+  button.close:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+  .modal-body { padding: 26px 28px; overflow-y: auto; flex: 1 1 auto; }
+
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--secondary-text); margin: 0 0 8px; }
+  h2.subject { font-size: 23px; font-weight: 600; line-height: 1.3; margin: 0 0 8px; }
+  .sender-line { font-size: 13px; color: var(--secondary-text); margin: 0; }
+  .sender-line + .sender-line { margin-top: 2px; }
+  .email-body { margin: 16px 0 0; padding-left: 16px;
+    border-left: 2px solid var(--border); font-size: 15px; line-height: 1.65;
+    white-space: pre-wrap; }
+
+  hr.rule { border: 0; border-top: 1px solid var(--border); margin: 26px 0; }
+  h3.section { font-size: 15px; font-weight: 600; margin: 0 0 14px; }
+
+  dl.assessment { margin: 0; display: grid; grid-template-columns: 130px 1fr;
+                  row-gap: 9px; column-gap: 16px; }
+  dl.assessment dt { font-size: 13px; color: var(--secondary-text); margin: 0; }
+  dl.assessment dd { font-size: 14px; margin: 0; }
+
+  .warning { background: var(--warning-surface); border-left: 3px solid var(--warning-text);
+    border-radius: 4px; padding: 18px 20px; margin: 26px 0; }
+  .warning h3 { font-size: 15px; font-weight: 600; color: var(--warning-text);
+    margin: 0 0 6px; display: flex; align-items: baseline; gap: 8px; }
+  .warning .intro { font-size: 14px; color: var(--warning-text); margin: 0 0 16px; }
+  .issue + .issue { margin-top: 16px; padding-top: 16px;
+                    border-top: 1px solid rgba(140,53,36,.18); }
+  .issue .title { font-size: 14px; font-weight: 600; margin: 0 0 3px; }
+  .issue .detail { font-size: 14px; color: var(--secondary-text); margin: 0 0 8px; }
+  button.locate { font: inherit; font-size: 13px; background: none; cursor: pointer;
+    border: 1px solid var(--warning-text); color: var(--warning-text);
+    border-radius: 4px; padding: 4px 11px; margin-right: 6px; }
+  button.locate:hover { background: rgba(140,53,36,.07); }
+  button.locate:focus-visible { outline: 2px solid var(--warning-text); outline-offset: 2px; }
+  p.locate-msg { font-size: 13px; color: var(--secondary-text); margin: 8px 0 0; }
+
+  p.reasoning { font-size: 14px; line-height: 1.7; margin: 0; }
+
+  .draft-head { display: flex; align-items: baseline; justify-content: space-between;
+    gap: 16px; margin-bottom: 4px; }
+  .draft-head .label { font-size: 15px; font-weight: 600; }
+  .draft-head .version { font-size: 13px; color: var(--secondary-text); }
+  p.helper { font-size: 13px; color: var(--secondary-text); margin: 0 0 12px; }
+
+  textarea.draft { width: 100%; display: block;
+    font: 16px/1.6 'Segoe UI', Arial, sans-serif; color: var(--text);
+    background: var(--quiet-surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 18px 20px; resize: none; overflow: hidden; }
+  textarea.draft:focus-visible { outline: 2px solid var(--primary);
+    outline-offset: 1px; background: var(--paper); }
+
+  .followup { background: var(--quiet-surface); border: 1px solid var(--border);
+    border-radius: 4px; padding: 20px; }
+  .followup p.head { font-size: 15px; font-weight: 600; margin: 0 0 6px; }
+  .followup p.text { font-size: 14px; color: var(--secondary-text); margin: 0; }
+
+  .modal-footer { flex-shrink: 0; border-top: 1px solid var(--border);
+    padding: 16px 28px 18px; background: var(--paper); border-radius: 0 0 8px 8px; }
+  .blocked-note { font-size: 13px; font-weight: 600; color: var(--warning-text);
+    margin: 0 0 12px; display: flex; align-items: baseline; gap: 7px; }
+  .actions { display: flex; align-items: center; gap: 10px; }
+  .actions .spacer { flex: 1; }
+
+  button.btn { font: inherit; font-size: 14px; cursor: pointer; border-radius: 4px;
+    padding: 8px 16px; border: 1px solid var(--border);
+    background: var(--paper); color: var(--text); }
+  button.btn:hover:not(:disabled) { background: var(--quiet-surface); }
+  button.btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  button.btn.quiet { border-color: transparent; color: var(--secondary-text); }
+  button.btn.quiet:hover { color: var(--text); background: var(--quiet-surface); }
+  button.btn.primary { background: var(--primary); color: var(--primary-text);
+    border-color: var(--primary); }
+  button.btn.primary:hover:not(:disabled) { background: #3a4a40; }
+  button.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+  p.no-send { font-size: 12px; color: var(--secondary-text); margin: 12px 0 0; }
+
+  .reject-form { border-top: 1px solid var(--border); margin-top: 14px; padding-top: 14px; }
+  .reject-form label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .reject-form input { width: 100%; font: inherit; font-size: 14px; padding: 7px 10px;
+    border: 1px solid var(--border); border-radius: 4px; background: var(--quiet-surface); }
+  .reject-form input:focus-visible { outline: 2px solid var(--primary);
+    outline-offset: 1px; background: var(--paper); }
+  .reject-form .row { display: flex; gap: 8px; margin-top: 10px; }
+  .reject-form .error { font-size: 13px; color: var(--warning-text); margin: 8px 0 0; }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <span class="name">OC Triage</span>
+  <span class="context">Correspondence review</span>
+</header>
+
+<main class="page">
+  <h1>Review inbox</h1>
+  <div id="inboxArea"><p class="loading">Reading cases from the checkpoint database…</p></div>
+  <p class="demo-note">Synthetic data · state persists in data/checkpoints.db · nothing is sent</p>
+</main>
+
+<dialog class="review" id="review" aria-labelledby="modalSubject">
+  <div id="modalContent"></div>
+</dialog>
+
+<script>
+const CATEGORY_LABELS = {
+  maintenance_common_property: "Common property maintenance",
+  maintenance_private_lot: "Private lot maintenance",
+  approval_request: "Approval request",
+  oc_certificate_request: "Owners corporation certificate",
+  levy_query: "Levy query",
+  rules_breach_complaint: "Rules breach complaint",
+  meeting_governance: "Meetings and governance",
+  insurance: "Insurance",
+  escalate_immediately: "Immediate escalation",
+};
+const URGENCY_LABELS = { urgent: "Urgent", priority: "Priority", routine: "Routine" };
+const STATUS_LABELS = {
+  awaiting: "Awaiting review",
+  approved: "Approved",
+  rejected: "Rejected",
+  escalated: "Human follow-up required",
+  not_started: "Not triaged",
+};
+
+let allCases = [];
+let queue = [];
+let current = null;
+let rejecting = false;
+let rejectError = "";
+let locateMessage = "";
+
+const dialog = document.getElementById("review");
+
+async function load() {
+  const res = await fetch("/api/cases");
+  allCases = await res.json();
+  queue = allCases.filter(c => c.status === "awaiting");
+  renderInbox();
+}
+
+function renderInbox() {
+  const rows = allCases.map(c => {
+    const awaiting = c.status === "awaiting";
+    const label = STATUS_LABELS[c.status] || c.status;
+    const extra = c.edited ? " with edits" : "";
+    const subject = awaiting
+      ? `<button class="subject-link" data-open="${c.id}">${esc(c.subject)}</button>`
+      : `<span class="plain-subject">${esc(c.subject)}</span>`;
+    return `<tr class="${awaiting ? "" : "done"}">
+      <td class="case-id">${esc(c.id)}</td>
+      <td>${subject}</td>
+      <td class="status">${esc(label + extra)}</td></tr>`;
+  }).join("");
+
+  document.getElementById("inboxArea").innerHTML = `
+    <table class="inbox">
+      <thead><tr><th scope="col">Case</th><th scope="col">Subject</th>
+      <th scope="col">Status</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  document.querySelectorAll("[data-open]").forEach(btn =>
+    btn.addEventListener("click", () => openCase(btn.dataset.open)));
+}
+
+function openCase(id) {
+  current = queue.find(c => c.id === id);
+  if (!current) return;
+  current.editedDraft = current.editedDraft ?? current.originalDraft;
+  rejecting = false; rejectError = ""; locateMessage = "";
+  renderModal();
+  if (!dialog.open) dialog.showModal();
+}
+
+function renderModal() {
+  const c = current;
+  if (!c) return;
+  const position = queue.indexOf(c) + 1;
+  const isEscalation = !c.originalDraft.trim();
+  const blocked = !c.grounded;
+  const edited = (c.editedDraft || "").trim() !== (c.originalDraft || "").trim();
+
+  document.getElementById("modalContent").innerHTML = `
+    <div class="modal-header">
+      <span class="who"><strong>OC Triage</strong> / Review</span>
+      <span class="header-right">
+        <span class="position">${position} of ${queue.length}</span>
+        <button class="close" id="btnClose" aria-label="Close review">&times;</button>
+      </span>
+    </div>
+
+    <div class="modal-body">
+      <p class="eyebrow">Incoming email</p>
+      <h2 class="subject" id="modalSubject">${esc(c.subject)}</h2>
+      <p class="sender-line">${esc(c.building)} · Lot ${esc(c.lot)}</p>
+      <p class="sender-line">${esc(c.sender)}</p>
+      <p class="email-body">${esc(c.emailBody)}</p>
+
+      <hr class="rule">
+
+      <h3 class="section">Assessment</h3>
+      <dl class="assessment">
+        <dt>Category</dt><dd>${esc(CATEGORY_LABELS[c.category] || c.category)}</dd>
+        <dt>Urgency</dt><dd>${esc(URGENCY_LABELS[c.urgency] || c.urgency)}</dd>
+        <dt>Authority</dt><dd>${esc(c.authority)}</dd>
+        <dt>Rules cited</dt><dd>${c.rulesCited.length ? esc(c.rulesCited.join(", ")) : "None cited"}</dd>
+        <dt>Sources checked</dt><dd>${c.tools.length ? esc(c.tools.join(", ")) : "None"}</dd>
+      </dl>
+
+      ${blocked ? warningBlock(c) : ""}
+
+      <h3 class="section" style="margin-top:26px">Why this assessment</h3>
+      <p class="reasoning">${esc(c.reasoning)}</p>
+
+      <hr class="rule">
+
+      ${isEscalation ? followupPanel() : draftEditor(c, edited)}
+    </div>
+
+    <div class="modal-footer">
+      ${blocked ? `<p class="blocked-note"><span aria-hidden="true">&#9888;</span>
+         Approval blocked · ${c.groundingIssues.length} unsupported claim${c.groundingIssues.length === 1 ? "" : "s"}${edited ? " · edited draft needs a fresh source check" : ""}</p>` : ""}
+      <div class="actions">
+        <button class="btn quiet" id="btnSkip">Skip for now</button>
+        ${isEscalation ? "" : `<button class="btn" id="btnReject">Reject</button>`}
+        <span class="spacer"></span>
+        ${isEscalation
+          ? `<button class="btn primary" id="btnFollowup">Record for human follow-up</button>`
+          : `<button class="btn primary" id="btnApprove" ${blocked || !(c.editedDraft || "").trim() ? "disabled" : ""}>${edited ? "Approve with edits" : "Approve"}</button>`}
+      </div>
+      ${rejecting ? rejectForm() : ""}
+      <p class="no-send">Records your decision only. Nothing is sent.</p>
+    </div>`;
+
+  wireModal();
+  if (!isEscalation) fitDraft();
+}
+
+function warningBlock(c) {
+  const issues = c.groundingIssues.map((iss, i) => `
+    <div class="issue">
+      <p class="title">${esc(iss.title)}</p>
+      <p class="detail">${esc(iss.explanation)}</p>
+      ${(iss.phrases || []).map(p =>
+        `<button class="locate" data-phrase="${esc(p)}">Locate &ldquo;${esc(p)}&rdquo; in draft</button>`).join("")}
+    </div>`).join("");
+  return `<div class="warning">
+      <h3><span aria-hidden="true">&#9888;</span> Do not approve this draft yet</h3>
+      <p class="intro">${c.groundingIssues.length} claim${c.groundingIssues.length === 1 ? " has" : "s have"} no supporting source.</p>
+      ${issues}
+      ${locateMessage ? `<p class="locate-msg">${esc(locateMessage)}</p>` : ""}
+    </div>`;
+}
+
+function followupPanel() {
+  return `<div class="followup">
+      <p class="head">A human response is needed</p>
+      <p class="text">No reply was drafted deliberately. Review what has been
+      reported and arrange the appropriate human follow-up.</p>
+    </div>`;
+}
+
+function draftEditor(c, edited) {
+  return `<div class="draft-head">
+      <span class="label">Draft reply</span>
+      <span class="version">${edited ? "Edited · original retained" : "Original draft"}</span>
+    </div>
+    <p class="helper">Edit directly. Your changes are kept with the original.</p>
+    <textarea class="draft" id="draft" aria-label="Draft reply">${esc(c.editedDraft)}</textarea>`;
+}
+
+function rejectForm() {
+  return `<div class="reject-form">
+      <label for="reason">Why are you rejecting this draft?</label>
+      <input id="reason" type="text" placeholder="Explain what needs to change">
+      ${rejectError ? `<p class="error">${esc(rejectError)}</p>` : ""}
+      <div class="row">
+        <button class="btn" id="btnCancelReject">Cancel</button>
+        <button class="btn primary" id="btnConfirmReject">Record rejection</button>
+      </div>
+    </div>`;
+}
+
+function wireModal() {
+  on("btnClose", () => dialog.close());
+  on("btnSkip", () => dialog.close());
+  on("btnApprove", () => decide("approved"));
+  on("btnFollowup", () => decide("escalated"));
+  on("btnReject", () => { rejecting = true; rejectError = ""; renderModal();
+                          document.getElementById("reason")?.focus(); });
+  on("btnCancelReject", () => { rejecting = false; renderModal(); });
+  on("btnConfirmReject", () => {
+    const reason = (document.getElementById("reason").value || "").trim();
+    if (!reason) { rejectError = "A reason is required."; renderModal();
+                   document.getElementById("reason").focus(); return; }
+    decide("rejected", reason);
+  });
+
+  const t = document.getElementById("draft");
+  if (t) {
+    t.addEventListener("input", () => {
+      const wasEdited = (current.editedDraft || "").trim() !== (current.originalDraft || "").trim();
+      current.editedDraft = t.value;
+      const isEdited = t.value.trim() !== (current.originalDraft || "").trim();
+      fitDraft();
+      if (wasEdited !== isEdited) {           // only re-render when the label changes
+        const pos = t.selectionStart;
+        renderModal();
+        const nt = document.getElementById("draft");
+        nt.focus(); nt.setSelectionRange(pos, pos);
+      }
+    });
+  }
+
+  document.querySelectorAll("[data-phrase]").forEach(btn =>
+    btn.addEventListener("click", () => locate(btn.dataset.phrase)));
+}
+
+function locate(phrase) {
+  const t = document.getElementById("draft");
+  if (!t) return;
+  const idx = t.value.toLowerCase().indexOf(phrase.toLowerCase());
+  if (idx === -1) {
+    locateMessage = "This phrase is no longer in the edited draft. A fresh source check is still required.";
+    renderModal();
+    return;
+  }
+  locateMessage = "";
+  t.focus();
+  t.setSelectionRange(idx, idx + phrase.length);
+  t.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+async function decide(decision, reason) {
+  const c = current;
+  const edited = (c.editedDraft || "").trim() !== (c.originalDraft || "").trim();
+  const body = { id: c.id, decision };
+  if (decision === "approved" && edited) body.text = c.editedDraft;
+  if (reason) body.reason = reason;
+
+  const res = await fetch("/api/decide", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  }).then(r => r.json());
+
+  if (res.error) { alert(res.error); return; }
+
+  dialog.close();
+  current = null;
+  await load();      // status comes back from the database, not from memory
+}
+
+function fitDraft() {
+  const t = document.getElementById("draft");
+  if (!t) return;
+  t.style.height = "auto";
+  t.style.height = t.scrollHeight + "px";
+}
+
+function on(id, fn) { document.getElementById(id)?.addEventListener("click", fn); }
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, ch =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+}
+
+load();
+</script>
+</body>
+</html>
