@@ -153,6 +153,22 @@
     outline-offset: 1px; background: var(--paper); }
   .reject-form .row { display: flex; gap: 8px; margin-top: 10px; }
   .reject-form .error { font-size: 13px; color: var(--warning-text); margin: 8px 0 0; }
+    .section-head { display: flex; align-items: baseline; justify-content: space-between;
+    margin: 30px 0 10px; }
+  .section-head:first-of-type { margin-top: 0; }
+  .section-head h2 { font-size: 14px; font-weight: 600; margin: 0; }
+  .section-head .hint { font-size: 12px; color: var(--secondary-text); }
+
+  td.urgency { width: 92px; font-size: 13px; }
+  td.category { width: 210px; font-size: 13px; color: var(--secondary-text); }
+  .flag { display: inline-flex; align-items: center; gap: 6px; }
+  .flag::before { content: ""; width: 6px; height: 6px; border-radius: 50%;
+                  background: var(--border); flex-shrink: 0; }
+  .flag.urgent::before { background: var(--warning-text); }
+  .flag.priority::before { background: #a98b4b; }
+  .flag.urgent { color: var(--warning-text); font-weight: 600; }
+
+  .rest { margin-top: 10px; font-size: 13px; color: var(--secondary-text); }
 </style>
 </head>
 <body>
@@ -209,32 +225,64 @@ async function load() {
   renderInbox();
 }
 
+
+  const URGENCY_ORDER = { urgent: 0, priority: 1, routine: 2 };
+
 function renderInbox() {
-  const rows = allCases.map(c => {
-    const awaiting = c.status === "awaiting";
-    const label = STATUS_LABELS[c.status] || c.status;
-    const extra = c.edited ? " with edits" : "";
-    const subject = awaiting
-      ? `<button class="subject-link" data-open="${c.id}">${esc(c.subject)}</button>`
-      : `<span class="plain-subject">${esc(c.subject)}</span>`;
-    return `<tr class="${awaiting ? "" : "done"}">
+  const awaiting = allCases
+    .filter(c => c.status === "awaiting")
+    .sort((a, b) =>
+      (URGENCY_ORDER[a.urgency] ?? 9) - (URGENCY_ORDER[b.urgency] ?? 9)
+      || a.id.localeCompare(b.id));
+
+  const decided = allCases.filter(
+    c => ["approved", "rejected", "escalated"].includes(c.status));
+  const untriaged = allCases.filter(c => c.status === "not_started");
+
+  queue = awaiting;
+
+  const awaitingRows = awaiting.map(c => `
+    <tr>
       <td class="case-id">${esc(c.id)}</td>
-      <td>${subject}</td>
-      <td class="status">${esc(label + extra)}</td></tr>`;
-  }).join("");
+      <td><button class="subject-link" data-open="${c.id}">${esc(c.subject)}</button></td>
+      <td class="category">${esc(CATEGORY_LABELS[c.category] || c.category || "")}</td>
+      <td class="urgency"><span class="flag ${esc(c.urgency || "")}">${esc(URGENCY_LABELS[c.urgency] || "")}</span></td>
+    </tr>`).join("");
+
+  const decidedRows = decided.map(c => `
+    <tr class="done">
+      <td class="case-id">${esc(c.id)}</td>
+      <td><span class="plain-subject">${esc(c.subject)}</span></td>
+      <td class="status">${esc((STATUS_LABELS[c.status] || c.status) + (c.edited ? " with edits" : ""))}</td>
+    </tr>`).join("");
 
   document.getElementById("inboxArea").innerHTML = `
-    <table class="inbox">
-      <thead><tr><th scope="col">Case</th><th scope="col">Subject</th>
-      <th scope="col">Status</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+    <div class="section-head">
+      <h2>Awaiting review</h2>
+      <span class="hint">${awaiting.length ? "Sorted by urgency" : ""}</span>
+    </div>
+    ${awaiting.length ? `
+      <table class="inbox">
+        <thead><tr><th scope="col">Case</th><th scope="col">Subject</th>
+        <th scope="col">Category</th><th scope="col">Urgency</th></tr></thead>
+        <tbody>${awaitingRows}</tbody>
+      </table>` : `<p class="rest">Nothing waiting. Start a case from the command line.</p>`}
+
+    ${decided.length ? `
+      <div class="section-head"><h2>Reviewed</h2></div>
+      <table class="inbox">
+        <thead><tr><th scope="col">Case</th><th scope="col">Subject</th>
+        <th scope="col">Outcome</th></tr></thead>
+        <tbody>${decidedRows}</tbody>
+      </table>` : ""}
+
+    ${untriaged.length ? `<p class="rest">${untriaged.length} further emails in the
+      dataset have not been triaged.</p>` : ""}`;
 
   document.querySelectorAll("[data-open]").forEach(btn =>
     btn.addEventListener("click", () => openCase(btn.dataset.open)));
 }
-
-function openCase(id) {
+  function openCase(id) {
   current = queue.find(c => c.id === id);
   if (!current) return;
   current.editedDraft = current.editedDraft ?? current.originalDraft;
