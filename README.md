@@ -15,6 +15,9 @@ and routes every one to a human for approval.
 | Citation validity | 100% |
 | Grounding | 100% |
 
+<img width="938" height="423" alt="image" src="https://github.com/user-attachments/assets/b2a096ce-d641-4027-bef0-66a88dab98a5" />
+
+
 Built twice: once as a hand-written tool-calling loop, once as a LangGraph
 graph. The framework changed nothing measurable — same accuracy, same
 failures, same emails. See [docs/framework_comparison.md](docs/framework_comparison.md).
